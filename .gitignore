@@ -1,0 +1,16 @@
+# Pliki systemowe
+.DS_Store
+**/.DS_Store
+
+# Materiały źródłowe – NIE publikować (prywatne, poza stroną)
+/Wizualizacje/
+/assets/renders/
+
+# Pliki źródłowe logo i nieużywane warianty (nie trafiają na stronę)
+/assets/Pamos_poziom_white.svg
+/assets/pamos-development-dark.svg
+/assets/pamos-development-graphite.svg
+/assets/pamos-development-green.svg
+/assets/pamos-development-horizontal-graphite.png
+/assets/pamos-development-horizontal-green.svg
+/assets/pamos-development-white.svg

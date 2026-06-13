@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polityka prywatności – PAMOS Development</title>
+<meta name="description" content="Polityka prywatności i cookies PAMOS Development Sp. z o.o.">
+<meta name="robots" content="index,follow">
+<script src="assets/cookies.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--graphite:#2f3b39;--sage:#68af9f;--sage-d:#5b9d8e;--ink:#3a4744;--muted:#90a39d;--line:#ececec;--bg:#ffffff;--soft:#eef4f1;--cream:#f7faf8;--serif:'Gilda Display',Georgia,serif;--sans:'Montserrat','Gotham',Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:880px;margin:0 auto;padding:0 22px}
+
+.nav{position:sticky;top:0;z-index:60;background:#fffffff2;backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid #eee}
+.nav .row{display:flex;align-items:center;height:70px;max-width:1180px;margin:0 auto;padding:0 22px}
+.logo{order:0;margin-left:0;display:flex;align-items:center}
+.logo img{height:34px;display:block}
+.navlinks{display:none;gap:28px;font-size:12.5px;letter-spacing:.03em;color:var(--ink);margin-left:auto}
+.navlinks a:hover{color:var(--sage)}
+.burger{order:1;margin-left:auto;font-size:24px;color:var(--graphite);background:none;border:0;cursor:pointer;line-height:1}
+.mobilemenu{display:none;flex-direction:column;gap:4px;padding:8px 22px 16px;border-bottom:1px solid #eee;background:#fff}
+.mobilemenu a{padding:12px 0;font-size:14px;border-bottom:1px solid #f3f3f3}
+.mobilemenu.open{display:flex}
+
+.legal{padding:46px 0 64px}
+.legal h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,5.4vw,42px);color:var(--graphite);line-height:1.1}
+.legal .upd{font-size:13px;color:var(--muted);margin-top:10px;letter-spacing:.02em}
+.legal h2{font-family:var(--sans);font-weight:700;font-size:16px;letter-spacing:.02em;color:var(--graphite);margin-top:30px;margin-bottom:8px}
+.legal p{font-size:14.5px;color:var(--ink);line-height:1.75;margin-top:8px}
+.legal ul{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.legal li{position:relative;padding-left:22px;font-size:14.5px;color:var(--ink);line-height:1.6}
+.legal li::before{content:"–";position:absolute;left:0;top:0;color:var(--sage-d);font-weight:700}
+.legal .box{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-top:14px;font-size:14px;line-height:1.7}
+.legal a{color:var(--sage-d);text-decoration:underline}
+.note{font-size:12.5px;color:var(--muted);margin-top:28px;font-style:italic}
+
+.footer{background:var(--graphite);color:#aebbb7;padding:40px 0}
+.footer__grid{display:flex;flex-direction:column;gap:26px;max-width:1180px;margin:0 auto;padding:0 22px}
+.footer__dev img{height:36px;margin-bottom:12px;display:block}
+.footer .small{font-size:12px;margin-top:8px}
+.footer .small a{color:#cdd6d3;text-decoration:underline}
+.footer .small a:hover{color:#fff}
+.footer__home{border-top:1px solid #44524e;padding-top:24px}
+.footer__label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#cdd6d3;margin-bottom:12px}
+.footer__homelogo{height:58px;max-width:100%;width:auto;margin-bottom:14px;display:block}
+.footer__ig{display:inline-flex;align-items:center;gap:8px;color:#cdd6d3;font-size:13px;font-weight:600}
+.footer__ig:hover{color:#fff}
+.footer__ig svg{width:18px;height:18px;fill:currentColor}
+
+@media(min-width:760px){
+  .navlinks{display:flex}
+  .burger{display:none}
+  .nav .row{height:96px}
+  .logo img{height:54px}
+  .footer__grid{flex-direction:row;justify-content:space-between;align-items:flex-start}
+  .footer__home{border-top:0;border-left:1px solid #44524e;padding-top:0;padding-left:44px}
+  .footer__dev img{margin-top:34px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="row">
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('mm').classList.toggle('open')">&#9776;</button>
+    <a class="logo" href="index.html"><img src="assets/pamos-development-horizontal-graphite.svg" alt="PAMOS Development"></a>
+    <nav class="navlinks">
+      <a href="dom.html">Dom</a>
+      <a href="wnetrza.html">Projektowanie wnętrz</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+  </div>
+  <div class="mobilemenu" id="mm">
+    <a href="dom.html">Dom</a>
+    <a href="wnetrza.html">Projektowanie wnętrz</a>
+    <a href="index.html#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+    <h1>Polityka prywatności i cookies</h1>
+    <p class="upd">Obowiązuje od: [data publikacji]</p>
+
+    <h2>1. Administrator danych</h2>
+    <p>Administratorem Twoich danych osobowych jest PAMOS Development Sp. z o.o. z siedzibą w Warszawie, ul. Jeziorki 28A, 02-863 Warszawa, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego pod numerem KRS 0001202022, NIP 9512632937, REGON 543075032. Kontakt w sprawach danych osobowych: <a href="mailto:pamosdevelopment@protonmail.com">pamosdevelopment@protonmail.com</a>.</p>
+
+    <h2>2. Jakie dane zbieramy</h2>
+    <p>Dane z formularza kontaktowego, które przekazujesz dobrowolnie: imię i nazwisko, numer telefonu, adres e-mail oraz treść wiadomości. Ponadto – za Twoją zgodą – dane zbierane automatycznie w związku z korzystaniem ze strony: identyfikatory plików cookies, dane o urządzeniu i przeglądarce, adres IP oraz informacje o aktywności na stronie, w celach analitycznych i marketingowych.</p>
+
+    <h2>3. Cele i podstawy prawne przetwarzania</h2>
+    <ul>
+      <li>Obsługa zapytania i kontakt w sprawie oferty – art. 6 ust. 1 lit. b RODO (czynności zmierzające do zawarcia umowy) oraz lit. f (prawnie uzasadniony interes: obsługa korespondencji).</li>
+      <li>Statystyka i analiza ruchu na stronie (Google Analytics 4) – art. 6 ust. 1 lit. a RODO (zgoda).</li>
+      <li>Marketing, reklama i remarketing, w tym pomiar konwersji i kierowanie reklam (Google Ads, Meta Pixel) – art. 6 ust. 1 lit. a RODO (zgoda).</li>
+      <li>Ustalenie, dochodzenie lub obrona roszczeń – art. 6 ust. 1 lit. f RODO.</li>
+    </ul>
+
+    <h2>4. Pliki cookies i technologie śledzące</h2>
+    <p>Strona korzysta z menedżera tagów Google Tag Manager, za pośrednictwem którego – wyłącznie po wyrażeniu przez Ciebie zgody – uruchamiane są narzędzia: Google Analytics 4 (analityka), Google Ads (reklama, remarketing, pomiar konwersji) oraz Meta Pixel (reklama i pomiar konwersji na platformach Facebook i Instagram). Stosujemy pliki cookies niezbędne (zapewniające działanie strony i zapamiętujące Twój wybór dot. zgód), analityczne oraz marketingowe. Cookies analityczne i marketingowe instalujemy dopiero po wyrażeniu zgody w banerze cookies.</p>
+    <div class="box">Swój wybór możesz w każdej chwili zmienić lub wycofać, klikając <a href="#" onclick="if(window.openCookieSettings){openCookieSettings();}return false;">Ustawienia cookies</a> (także w stopce strony).</div>
+
+    <h2>5. Profilowanie</h2>
+    <p>W ramach narzędzi reklamowych (Google Ads, Meta Pixel) Twoje dane mogą być wykorzystywane do profilowania na potrzeby dopasowania reklam. Profilowanie to nie wywołuje wobec Ciebie skutków prawnych ani nie wpływa w podobny sposób istotnie na Twoją sytuację.</p>
+
+    <h2>6. Odbiorcy danych i podmioty przetwarzające</h2>
+    <p>Z danymi mogą zapoznać się nasi zaufani dostawcy działający na nasze zlecenie: dostawca obsługi formularza kontaktowego (Web3Forms), dostawca poczty e-mail oraz hostingu strony, a także – w zakresie cookies i narzędzi marketingowo-analitycznych – Google LLC (Google Tag Manager, Google Analytics, Google Ads, Google Maps) oraz Meta Platforms Ireland / Inc. (Meta Pixel).</p>
+
+    <h2>7. Przekazywanie danych poza EOG</h2>
+    <p>Część dostawców (m.in. Google, Meta, obsługa formularza) może przetwarzać dane poza Europejskim Obszarem Gospodarczym, w tym w USA, w oparciu o odpowiednie zabezpieczenia przewidziane w RODO (standardowe klauzule umowne oraz program Data Privacy Framework).</p>
+
+    <h2>8. Okres przechowywania</h2>
+    <p>Dane z formularza przechowujemy przez czas niezbędny do obsługi zapytania i prowadzenia korespondencji, a następnie do upływu okresu przedawnienia ewentualnych roszczeń. Dane związane z plikami cookies przechowujemy przez okres ważności poszczególnych plików cookies lub do czasu wycofania zgody.</p>
+
+    <h2>9. Twoje prawa</h2>
+    <p>Masz prawo do dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, wniesienia sprzeciwu, przenoszenia danych oraz cofnięcia zgody w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania dokonanego przed jej cofnięciem). Przysługuje Ci również prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa).</p>
+
+    <h2>10. Dobrowolność podania danych</h2>
+    <p>Podanie danych w formularzu jest dobrowolne, lecz niezbędne do obsługi zapytania. Wyrażenie zgód na cookies analityczne i marketingowe jest dobrowolne i nie warunkuje korzystania ze strony.</p>
+
+    <h2>11. Zmiany polityki</h2>
+    <p>Możemy aktualizować niniejszą politykę. Aktualna wersja wraz z datą obowiązywania jest zawsze dostępna na tej stronie.</p>
+
+    <p class="note">Dokument ma charakter informacyjny i może wymagać dostosowania do indywidualnej sytuacji oraz weryfikacji prawnej.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__dev">
+      <img src="assets/pamos-development-horizontal-white.svg" alt="PAMOS Development">
+      <p class="small">PAMOS Development Sp. z o.o. · NIP 951 26 32 937</p>
+      <p class="small">© 2026 PAMOS Development. Wszelkie prawa zastrzeżone.</p>
+      <p class="small"><a href="polityka-prywatnosci.html">Polityka prywatności</a> · <a href="#" onclick="if(window.openCookieSettings){openCookieSettings();}return false;">Ustawienia cookies</a></p>
+    </div>
+    <div class="footer__home">
+      <p class="footer__label">Nasz showroom z meblami</p>
+      <a href="https://www.instagram.com/pamos_home/" target="_blank" rel="noopener" aria-label="PAMOS HOME na Instagramie">
+        <img class="footer__homelogo" src="assets/pamos-home-white-tight.svg" alt="PAMOS HOME">
+      </a>
+      <a class="footer__ig" href="https://www.instagram.com/pamos_home/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91a5.9 5.9 0 0 0 1.38 2.13 5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a6.15 6.15 0 0 0 3.51-3.51c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84M12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"/><circle cx="18.41" cy="5.59" r="1.44"/></svg>
+        pamos_home
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

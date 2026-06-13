@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projektowanie wnętrz – PAMOS Interior Design</title>
+<meta name="description" content="PAMOS Interior Design – kompletne projekty wnętrz. Oferta specjalna dla klientów PAMOS Development: projekt domu 15 000 zł zamiast 30 000 zł.">
+<script src="assets/cookies.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --graphite:#2f3b39; --sage:#68af9f; --sage-d:#5b9d8e; --ink:#3a4744; --muted:#90a39d;
+  --line:#ececec; --bg:#ffffff; --soft:#eef4f1; --cream:#f7faf8;
+  --serif:'Gilda Display',Georgia,serif;
+  --sans:'Montserrat','Gotham',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 22px}
+.kicker{font-weight:600;font-size:11px;letter-spacing:.34em;color:#5d7d74;text-transform:uppercase}
+.h2{font-family:var(--serif);font-size:clamp(28px,5.4vw,42px);color:var(--graphite);line-height:1.08;margin-top:12px}
+.lead{font-size:15px;color:var(--ink);margin-top:16px;max-width:62ch}
+.section{padding:56px 0}
+.todo{display:inline-block;font-size:11px;letter-spacing:.04em;color:#6c857d;background:#eaf3ef;border:1px dashed #bcd4cc;border-radius:6px;padding:4px 10px;margin-top:10px}
+.btn{font-family:var(--sans);font-weight:600;font-size:14px;padding:14px 22px;border-radius:9px;cursor:pointer;border:1px solid var(--sage);text-align:center;transition:.15s;display:inline-block}
+.btn.solid{background:var(--sage);color:#fff}
+.btn.solid:hover{background:var(--sage-d)}
+.ulink{color:var(--sage-d);text-decoration:underline;text-underline-offset:3px;font-weight:600;font-size:14px;font-family:var(--sans)}
+.offerwrap{display:flex;flex-direction:column;align-items:center;gap:22px;margin-top:24px}
+.scope{display:none;text-align:left;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:24px;max-width:560px;width:100%}
+.offerwrap.open .scope{display:block}
+.scope__title{font-family:var(--serif);font-weight:400;font-size:20px;color:var(--graphite);margin-bottom:12px}
+.scope__intro{font-size:14px;color:var(--ink);margin-bottom:16px;line-height:1.65}
+.scope__list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.scope__list li{position:relative;padding-left:28px;font-size:14px;color:var(--ink);line-height:1.55}
+.scope__list li::before{content:"✓";position:absolute;left:0;top:0;color:var(--sage-d);font-weight:700}
+@media(min-width:880px){
+  .offerwrap.open{flex-direction:row;align-items:flex-start;justify-content:flex-start;gap:32px}
+  .offerwrap.open .offercard{margin:0}
+  .offerwrap.open .scope{max-width:600px}
+}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:60;background:#fffffff2;backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid #eee}
+.nav .row{display:flex;align-items:center;height:70px}
+.logo{order:0;margin-left:0;display:flex;align-items:center}
+.logo img{height:34px;display:block}
+.navlinks{display:none;gap:28px;font-size:12.5px;letter-spacing:.03em;color:var(--ink)}
+.navlinks a:hover{color:var(--sage)}
+.burger{order:1;margin-left:auto;font-size:24px;color:var(--graphite);background:none;border:0;cursor:pointer;line-height:1}
+.mobilemenu{display:none;flex-direction:column;gap:4px;padding:8px 22px 16px;border-bottom:1px solid #eee;background:#fff}
+.mobilemenu a{padding:12px 0;font-size:14px;border-bottom:1px solid #f3f3f3}
+.mobilemenu.open{display:flex}
+
+/* INTRO */
+.intro{background:var(--cream)}
+.intro .lead{max-width:64ch}
+
+/* OFFER */
+.offer{background:var(--soft)}
+.offercard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px 26px;text-align:center;max-width:560px;width:100%;flex-shrink:0}
+.offercard .meta{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);font-weight:700}
+.offercard h3{font-family:var(--serif);font-weight:400;font-size:26px;color:var(--graphite);margin-top:6px}
+.offerprice{display:flex;align-items:baseline;justify-content:center;gap:14px;margin:18px 0 4px}
+.offerprice .old{font-size:20px;color:#aeb9b6;text-decoration:line-through}
+.offerprice .new{font-family:var(--serif);font-size:42px;color:var(--graphite)}
+.offerprice .for{font-size:12px;color:var(--muted)}
+
+/* GALLERY */
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:28px}
+.gal figure{border-radius:14px;overflow:hidden;background:#e6efeb;aspect-ratio:4/3}
+.gal img{width:100%;height:100%;object-fit:cover;transition:.3s}
+.gal figure:hover img{transform:scale(1.04)}
+/* CAROUSEL REALIZACJE */
+.galc{position:relative;margin-top:28px}
+.galc-track{display:grid;grid-auto-flow:column;grid-template-rows:310px 310px;gap:16px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding:2px}
+.galc-track::-webkit-scrollbar{display:none}
+.galc-track figure{width:252px;border-radius:14px;overflow:hidden;background:#e6efeb}
+.galc-track img{width:100%;height:100%;object-fit:cover;transition:.35s}
+.galc-track figure:hover img{transform:scale(1.05)}
+.galc-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 8px 22px rgba(47,59,57,.14);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s}
+.galc-nav:hover{background:var(--soft)}
+.galc-nav.prev{left:-14px}
+.galc-nav.next{right:-14px}
+.galc-nav svg{width:22px;height:22px;fill:none;stroke:var(--sage);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:760px){
+  .galc-track{grid-template-rows:200px 200px;gap:12px}
+  .galc-track figure{width:158px}
+  .galc-nav{width:40px;height:40px}
+  .galc-nav.prev{left:-6px}.galc-nav.next{right:-6px}
+}
+
+/* ABOUT */
+.about{background:var(--cream)}
+.aboutgrid{display:grid;grid-template-columns:1fr;gap:28px;margin-top:28px;align-items:center}
+.aboutphoto{border-radius:16px;overflow:hidden;background:#e6efeb;aspect-ratio:3/4;max-width:420px}
+.aboutphoto img{width:100%;height:100%;object-fit:cover}
+.aboutph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;color:#7d958d;font-size:12px;padding:20px;background:repeating-linear-gradient(45deg,#eef4f1,#eef4f1 14px,#e7efeb 14px,#e7efeb 28px)}
+.about h3{font-family:var(--serif);font-weight:400;font-size:30px;color:var(--graphite)}
+.about .role{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--sage);font-weight:700;margin-top:6px}
+.about p{font-size:15px;color:var(--ink);margin-top:16px}
+
+/* FORM */
+.contact{background:#fff}
+.cgrid{display:grid;grid-template-columns:1fr;gap:32px;margin-top:28px}
+.cgrid .formcard{order:-1}
+.cinfo .line{font-size:14px;color:var(--ink);margin-top:10px}
+.cinfo .line b{color:var(--graphite);font-weight:600}
+.cinfo a{color:var(--sage-d)}
+.formcard{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:24px}
+.field{margin-bottom:13px}
+.field label{display:block;font-size:12px;letter-spacing:.04em;color:var(--muted);margin-bottom:6px}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:14px;color:var(--graphite);border:1px solid #dde6e2;border-radius:9px;padding:13px 14px;background:#fff;outline:none}
+.field input:focus,.field textarea:focus{border-color:var(--sage)}
+.field textarea{resize:vertical;min-height:100px}
+.formcard .btn.solid{width:100%}
+.hp{position:absolute;left:-9999px}
+
+/* POPUP / FOOTER */
+.overlay{position:fixed;inset:0;background:rgba(20,28,26,.5);display:none;align-items:center;justify-content:center;z-index:100;padding:22px}
+.overlay.open{display:flex}
+.modal{background:#fff;border-radius:16px;max-width:420px;width:100%;padding:34px 28px;text-align:center}
+.modal .ok{width:56px;height:56px;border-radius:50%;background:var(--soft);color:var(--sage-d);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px}
+.modal h3{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--graphite);margin-bottom:10px}
+.modal p{font-size:14px;color:var(--ink);margin-bottom:20px}
+.footer{background:var(--graphite);color:#aebbb7;padding:40px 0}
+.footer__grid{display:flex;flex-direction:column;gap:26px}
+.footer__dev img{height:36px;margin-bottom:12px;display:block}
+.footer .small{font-size:12px;margin-top:8px}
+.footer .small a{color:#cdd6d3;text-decoration:underline}
+.footer .small a:hover{color:#fff}
+.footer__home{border-top:1px solid #44524e;padding-top:24px}
+.footer__label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#cdd6d3;margin-bottom:12px}
+.footer__homelogo{height:58px;max-width:100%;width:auto;margin-bottom:14px;display:block}
+.footer__ig{display:inline-flex;align-items:center;gap:8px;color:#cdd6d3;font-size:13px;font-weight:600}
+.footer__ig:hover{color:#fff}
+.footer__ig svg{width:18px;height:18px;fill:currentColor}
+
+@media(min-width:760px){
+  .navlinks{display:flex;order:1;margin-left:auto}
+  .logo{order:0;margin-left:0}
+  .burger{display:none}
+  .nav .row{height:96px}
+  .logo img{height:54px}
+  .aboutgrid{grid-template-columns:420px 1fr;gap:48px}
+  .cgrid{grid-template-columns:1fr 1.1fr}
+  .cgrid .formcard{order:0}
+  .footer__grid{flex-direction:row;justify-content:space-between;align-items:flex-start}
+  .footer__home{border-top:0;border-left:1px solid #44524e;padding-top:0;padding-left:44px}
+  .footer__dev img{margin-top:34px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap row">
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('mm').classList.toggle('open')">&#9776;</button>
+    <a class="logo" href="index.html"><img src="assets/pamos-development-horizontal-graphite.svg" alt="PAMOS Development"></a>
+    <nav class="navlinks">
+      <a href="dom.html">Dom</a>
+      <a href="wnetrza.html">Projektowanie wnętrz</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+  <div class="mobilemenu" id="mm">
+    <a href="dom.html">Dom</a>
+    <a href="wnetrza.html">Projektowanie wnętrz</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="intro section">
+  <div class="wrap">
+    <p class="kicker">PAMOS Interior Design</p>
+    <h1 class="h2">Wykończymy go po Twojemu</h1>
+    <p class="lead">Nie musisz zaczynać od pustych ścian. Przygotujemy kompletny projekt Twojego wnętrza – od układu funkcjonalnego, przez dobór materiałów i kolorów, po ostatni detal. Tak, żebyś od pierwszego dnia czuł się u siebie.</p>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="offer section">
+  <div class="wrap">
+    <p class="kicker">Oferta</p>
+    <h2 class="h2">Specjalnie dla klientów PAMOS Development</h2>
+    <div class="offerwrap" id="offerwrap">
+      <div class="offercard">
+      <div class="meta">Oferta specjalna</div>
+      <h3>Kompletny projekt wnętrza domu</h3>
+      <div class="offerprice">
+        <span class="old">30 000 zł</span>
+        <span class="new">15 000 zł</span>
+      </div>
+      <p class="for" style="font-size:12px;color:var(--muted)">cena dla nabywców naszego domu</p>
+      <div style="margin-top:20px">
+        <a class="btn solid" href="#kontakt" style="padding:14px 30px">Zapytaj o projekt</a>
+      </div>
+      <div style="margin-top:14px">
+        <button class="ulink" type="button" id="scopeBtn" onclick="toggleScope()" style="background:none;border:0;cursor:pointer;padding:0">Sprawdź, co obejmuje projekt</button>
+      </div>
+      <div style="margin-top:14px">
+        <a class="ulink" href="https://www.instagram.com/pamos_interiordesign/" target="_blank" rel="noopener">Zobacz nasze realizacje na Instagramie</a>
+      </div>
+      </div>
+      <div class="scope" id="scope">
+        <h4 class="scope__title">Co obejmuje projekt</h4>
+        <p class="scope__intro">Projekt wnętrza to decyzje, które wpływają na codzienność przez lata. Realizujemy go spokojnie – standardowo ok. 3–4 miesięcy, z możliwością przyspieszenia – aby efekt był naprawdę dopracowany i spójny.</p>
+        <ul class="scope__list">
+          <li>3 warianty układu funkcjonalnego (rzuty 2D) – wybierasz aranżację skrojoną pod Wasze nawyki, z przemyślanym miejscem na meble, AGD i RTV oraz możliwą zmianą ścian działowych.</li>
+          <li>Po 3 koncepcje stylistyczne każdego pomieszczenia w realistycznych wizualizacjach 3D – zobaczysz swój dom, zanim powstanie.</li>
+          <li>Dobór materiałów, kolorów i rozwiązań estetycznych, spójnych w całym wnętrzu.</li>
+          <li>Pełna dokumentacja wykonawcza dla ekip: układy płytek, rozmieszczenie punktów elektrycznych, rysunki stolarskie i szczegółowe wymiary.</li>
+          <li>Gotowa lista zakupowa materiałów i wyposażenia – wiesz dokładnie, co i gdzie kupić.</li>
+          <li>Po 3 tury poprawek na każdym etapie – dopracowujemy projekt do ostatniego detalu.</li>
+          <li>Spotkanie online na start, inwentaryzacja i wizyta na budowie – jesteśmy z Wami od pomysłu po realizację.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REALIZACJE -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Portfolio</p>
+    <h2 class="h2">Nasze realizacje</h2>
+    <p class="lead">Wybrane wnętrza zaprojektowane przez PAMOS Interior Design.</p>
+    <div class="galc">
+      <button class="galc-nav prev" aria-label="Poprzednie" onclick="galScroll(-1)"><svg viewBox="0 0 24 24"><polyline points="15 5 8 12 15 19"/></svg></button>
+      <div class="galc-track" id="galTrack">
+        <figure><img src="assets/realizacje/499245560_17910980487133234_6116953617742940453_n.jpg" alt="Realizacja PAMOS Interior Design" loading="lazy"></figure>
+        <figure><img src="assets/realizacje/500944299_17911869315133234_5071507543088781135_n.jpg" alt="Realizacja PAMOS Interior Design" loading="lazy"></figure>
+        <figure><img src="assets/realizacje/556900438_17926710966133234_9099584885899996196_n.jpg" alt="Realizacja PAMOS Interior Design" loading="lazy"></figure>
+        <figure><img src="assets/realizacje/558130654_17926710969133234_731390269640394190_n.jpg" alt="Realizacja PAMOS Interior Design" loading="lazy"></figure>
+        <figure><img src="assets/realizacje/610669625_17937019023133234_8720271673101984261_n.jpg" alt="Realizacja PAMOS Interior Design" loading="lazy"></figure>
+        <figure><img src="assets/realizacje/654003338_17946629427133234_7533947128901666081_n.jpg" alt="Realizacja PAMOS Interior Design" loading="lazy"></figure>
+        <figure><img src="assets/realizacje/655706728_17947890933133234_4054367436351047902_n.jpg" alt="Realizacja PAMOS Interior Design" loading="lazy"></figure>
+        <figure><img src="assets/realizacje/657302656_17948507571133234_4522626053342910904_n.jpg" alt="Realizacja PAMOS Interior Design" loading="lazy"></figure>
+        <figure><img src="assets/realizacje/673896368_17955119082133234_3548702605747414367_n.jpg" alt="Realizacja PAMOS Interior Design" loading="lazy"></figure>
+        <figure><img src="assets/realizacje/712196565_17958215961133234_901064043400137349_n.jpg" alt="Realizacja PAMOS Interior Design" loading="lazy"></figure>
+      </div>
+      <button class="galc-nav next" aria-label="Następne" onclick="galScroll(1)"><svg viewBox="0 0 24 24"><polyline points="9 5 16 12 9 19"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- O MNIE -->
+<section class="about section">
+  <div class="wrap">
+    <p class="kicker">O mnie</p>
+    <h2 class="h2">Poznaj projektantkę</h2>
+    <div class="aboutgrid">
+      <div class="aboutphoto">
+        <img src="assets/paulina.jpg" alt="Paulina – właścicielka PAMOS Interior Design">
+      </div>
+      <div class="abouttext">
+        <h3>Cześć, jestem Paulina</h3>
+        <div class="role">Właścicielka PAMOS Interior Design</div>
+        <p>Z wykształcenia jestem architektem, a projektowaniem wnętrz zajmuję się od 9 lat. Swoją przygodę zaczęłam w IKEA – to było bardzo cenne doświadczenie. Pracowałam też jako projektantka w innych firmach, zdobywając doświadczenie zarówno w przestrzeniach prywatnych, jak i publicznych: biurach i sklepach. W końcu postanowiłam pójść na swoje.</p>
+        <p>Zajmuję się kompleksowym projektowaniem wnętrz i do każdego projektu podchodzę indywidualnie – każde wnętrze jest wyjątkowe, tak jak jego właściciele. Projektowanie to długi proces, za którym kryje się znacznie więcej niż piękne zdjęcia. Największą satysfakcję sprawia mi widok uśmiechniętych właścicieli, którzy spełnili marzenie o wymarzonym domu.</p>
+        <p>Poza projektowaniem współprowadzę PAMOS HOME – outlet mebli i dodatków. Przez kilka dni w tygodniu można mnie spotkać w showroomie na Krakowiaków, gdzie zawsze chętnie pomogę w urządzaniu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact section" id="kontakt">
+  <div class="wrap">
+    <p class="kicker">Kontakt</p>
+    <h2 class="h2">Porozmawiajmy o Twoim wnętrzu</h2>
+    <div class="cgrid">
+      <div class="cinfo">
+        <p class="lead" style="margin-top:0">Napisz, a odezwiemy się i umówimy spotkanie, na którym omówimy Twój projekt.</p>
+        <p class="line"><b>PAMOS Interior Design</b></p>
+        <p class="line">Instagram: <a href="https://www.instagram.com/pamos_interiordesign/" target="_blank" rel="noopener">@pamos_interiordesign</a></p>
+      </div>
+      <form class="formcard" id="contactForm">
+        <input type="hidden" name="access_key" value="ebe17453-07dc-42cd-bff4-a65a6dfa8d95">
+        <input type="hidden" name="subject" value="Zapytanie o projekt wnętrza – PAMOS Interior Design">
+        <input type="hidden" name="from_name" value="Strona PAMOS – Projektowanie wnętrz">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+        <div class="field"><label for="name">Imię i nazwisko</label><input id="name" name="name" type="text" required></div>
+        <div class="field"><label for="phone">Nr telefonu</label><input id="phone" name="phone" type="tel" required></div>
+        <div class="field"><label for="email">Adres e-mail</label><input id="email" name="email" type="email" required></div>
+        <div class="field"><label for="msg">Wiadomość</label><textarea id="msg" name="message" placeholder="Opisz krótko swoje wnętrze i oczekiwania"></textarea></div>
+        <button class="btn solid" type="submit">Wyślij zapytanie</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__dev">
+      <img src="assets/pamos-development-horizontal-white.svg" alt="PAMOS Development">
+      <p class="small">PAMOS Development Sp. z o.o. · NIP 951 26 32 937</p>
+      <p class="small">© 2026 PAMOS Development. Wszelkie prawa zastrzeżone.</p>
+      <p class="small"><a href="polityka-prywatnosci.html">Polityka prywatności</a> · <a href="#" onclick="if(window.openCookieSettings){openCookieSettings();}return false;">Ustawienia cookies</a></p>
+    </div>
+    <div class="footer__home">
+      <p class="footer__label">Nasz showroom z meblami</p>
+      <a href="https://www.instagram.com/pamos_home/" target="_blank" rel="noopener" aria-label="PAMOS HOME na Instagramie">
+        <img class="footer__homelogo" src="assets/pamos-home-white-tight.svg" alt="PAMOS HOME">
+      </a>
+      <a class="footer__ig" href="https://www.instagram.com/pamos_home/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91a5.9 5.9 0 0 0 1.38 2.13 5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a6.15 6.15 0 0 0 3.51-3.51c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84M12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"/><circle cx="18.41" cy="5.59" r="1.44"/></svg>
+        pamos_home
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="ok">&#10003;</div>
+    <h3>Dziękujemy</h3>
+    <p>Twoja wiadomość została do nas wysłana. Skontaktujemy się z Tobą jak najszybciej to możliwe.</p>
+    <button class="btn solid" style="width:auto;padding:12px 26px" onclick="document.getElementById('overlay').classList.remove('open')">Zamknij</button>
+  </div>
+</div>
+
+<script>
+function galScroll(dir){
+  var t=document.getElementById('galTrack');
+  var max=t.scrollWidth-t.clientWidth-2;
+  if(dir>0 && t.scrollLeft>=max){ t.scrollTo({left:0,behavior:'smooth'}); return; }
+  if(dir<0 && t.scrollLeft<=2){ t.scrollTo({left:t.scrollWidth,behavior:'smooth'}); return; }
+  t.scrollBy({left:dir*Math.round(t.clientWidth*0.8),behavior:'smooth'});
+}
+function toggleScope(){
+  var w=document.getElementById('offerwrap');
+  var open=w.classList.toggle('open');
+  document.getElementById('scopeBtn').textContent= open ? 'Ukryj szczegóły projektu' : 'Sprawdź, co obejmuje projekt';
+}
+document.getElementById('contactForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var form=e.target, data=new FormData(form);
+  try{
+    var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:data});
+    var json=await res.json();
+    if(json.success){ form.reset(); document.getElementById('overlay').classList.add('open'); }
+    else { alert('Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na pamosdevelopment@protonmail.com'); }
+  }catch(err){ alert('Błąd połączenia. Spróbuj ponownie lub napisz na pamosdevelopment@protonmail.com'); }
+});
+</script>
+
+</body>
+</html>

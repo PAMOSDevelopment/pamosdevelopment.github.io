@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dom w Celinowie — PAMOS Development</title>
+<meta name="description" content="Dom wolnostojący 156,91 m² w Celinowie, gm. Dębe Wielkie. 5 pokoi, 3 łazienki, działka 600 m². Cena 1 269 000 zł.">
+<script src="assets/cookies.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --graphite:#2f3b39; --sage:#68af9f; --sage-d:#5b9d8e; --ink:#3a4744; --muted:#90a39d;
+  --line:#ececec; --bg:#ffffff; --soft:#eef4f1; --cream:#f7faf8;
+  --serif:'Gilda Display',Georgia,serif;
+  --sans:'Montserrat','Gotham',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 22px}
+.kicker{font-weight:600;font-size:11px;letter-spacing:.34em;color:#5d7d74;text-transform:uppercase}
+.section{padding:56px 0}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:60;background:#fffffff2;backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid #eee}
+.nav .row{display:flex;align-items:center;height:70px}
+.logo{order:0;margin-left:0;display:flex;align-items:center}
+.logo img{height:34px;display:block}
+.navlinks{display:none;gap:28px;font-size:12.5px;letter-spacing:.03em;color:var(--ink)}
+.navlinks a:hover{color:var(--sage)}
+.burger{order:1;margin-left:auto;font-size:24px;color:var(--graphite);background:none;border:0;cursor:pointer;line-height:1}
+.mobilemenu{display:none;flex-direction:column;gap:4px;padding:8px 22px 16px;border-bottom:1px solid #eee;background:#fff}
+.mobilemenu a{padding:12px 0;font-size:14px;border-bottom:1px solid #f3f3f3}
+.mobilemenu.open{display:flex}
+
+/* BREADCRUMB */
+.crumb{padding:18px 0 0;font-size:12px;color:var(--muted);letter-spacing:.04em}
+.crumb a:hover{color:var(--sage)}
+
+/* GALLERY */
+.gallery{margin-top:14px}
+.gallery__mainwrap{position:relative;border-radius:16px;overflow:hidden;cursor:zoom-in}
+.gallery__main{width:100%;aspect-ratio:16/9;object-fit:cover;background:#e6efeb;display:block}
+.gallery__cap{position:absolute;left:0;right:0;bottom:0;background:rgba(20,28,26,.6);color:#fff;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.04em;padding:12px 18px}
+.gallery__thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.thumb{position:relative;border-radius:10px;overflow:hidden;cursor:zoom-in;background:#e6efeb}
+.thumb img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:.25s}
+.thumb:hover img{transform:scale(1.05)}
+.thumb figcaption{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;background:rgba(20,28,26,.52);color:#fff;font-family:var(--sans);font-weight:600;font-size:11.5px;line-height:1.25;letter-spacing:.02em;opacity:0;transition:.18s}
+.thumb:hover figcaption{opacity:1}
+.gallery__sectlabel{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);margin:22px 0 10px}
+.thumbcar{position:relative;margin-top:2px}
+.thumbcar-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.thumbcar-track::-webkit-scrollbar{display:none}
+.thumbcar-track .thumb{flex:0 0 calc((100% - 20px)/3);scroll-snap-align:start}
+.thumbcar-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 6px 18px rgba(47,59,57,.16);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3}
+.thumbcar-nav:hover{background:var(--soft)}
+.thumbcar-nav.prev{left:-10px}.thumbcar-nav.next{right:-10px}
+.thumbcar-nav svg{width:18px;height:18px;fill:none;stroke:var(--sage);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* PRODUCT */
+.prod{display:grid;grid-template-columns:1fr;gap:32px;margin-top:40px}
+.ptitle{font-family:var(--serif);font-size:clamp(28px,5vw,40px);color:var(--graphite);line-height:1.08}
+.ploc{font-size:13px;color:var(--muted);letter-spacing:.04em;margin-top:8px}
+.pricebox{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:22px 0;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pricebox .total{font-family:var(--serif);font-size:clamp(30px,6vw,40px);color:var(--graphite)}
+.pricebox .perm{font-family:var(--sans);font-weight:700;font-size:14px;color:var(--sage-d);background:var(--soft);padding:8px 14px;border-radius:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.chip{font-size:12.5px;font-weight:500;color:var(--graphite);background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:8px 14px}
+.pdesc{font-size:15px;color:var(--ink);margin-top:14px;line-height:1.7}
+
+/* FORM CARD */
+.formcard{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:24px}
+.formcard h3{font-family:var(--serif);font-weight:400;font-size:22px;color:var(--graphite);margin-bottom:4px}
+.formcard p.small{font-size:13px;color:var(--muted);margin-bottom:16px}
+.field{margin-bottom:13px}
+.field label{display:block;font-size:12px;letter-spacing:.04em;color:var(--muted);margin-bottom:6px}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:14px;color:var(--graphite);border:1px solid #dde6e2;border-radius:9px;padding:13px 14px;background:#fff;outline:none}
+.field input:focus,.field textarea:focus{border-color:var(--sage)}
+.field textarea{resize:vertical;min-height:96px}
+.btn{font-family:var(--sans);font-weight:600;font-size:14px;padding:14px 22px;border-radius:9px;cursor:pointer;border:1px solid var(--sage);text-align:center;transition:.15s;display:inline-block}
+.btn.solid{background:var(--sage);color:#fff;width:100%}
+.btn.solid:hover{background:var(--sage-d)}
+.hp{position:absolute;left:-9999px}
+
+/* PLANS (rzuty) */
+.plans{margin-top:4px}
+.plans-title{font-family:var(--sans);font-weight:700;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--sage)}
+.plan-slide{display:none;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;padding:12px}
+.plan-slide.active{display:block}
+.plans__cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:14px 0 10px}
+.plan-imgwrap{position:relative}
+.plans img{width:100%;display:block;border-radius:6px}
+.plan-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 6px 18px rgba(47,59,57,.16);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;z-index:2}
+.plan-nav:hover{background:var(--soft);border-color:var(--sage)}
+.plan-nav.next{right:8px}.plan-nav.prev{left:8px}
+.plan-nav svg{width:20px;height:20px;fill:none;stroke:var(--sage);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.plancams{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.cam{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-weight:600;font-size:12px;color:var(--graphite);background:#fff;border:1px solid var(--line);border-radius:20px;padding:6px 12px 6px 9px;cursor:pointer;transition:.15s}
+.cam:hover{border-color:var(--sage);color:var(--sage-d);background:var(--soft)}
+.cam svg{width:16px;height:16px;fill:none;stroke:var(--sage);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.planhint{font-size:11px;color:var(--muted);margin-top:10px;font-style:italic}
+
+/* LIGHTBOX */
+.lbimg{cursor:zoom-in}
+.lb{position:fixed;inset:0;background:rgba(20,28,26,.88);display:none;align-items:center;justify-content:center;z-index:120;padding:24px;cursor:zoom-out}
+.lb.open{display:flex}
+.lb__fig{display:flex;flex-direction:column;align-items:center;max-width:92%}
+.lb__fig img{max-width:100%;max-height:84vh;border-radius:10px;box-shadow:0 24px 70px rgba(0,0,0,.55);background:#fff}
+.lb__cap{margin-top:14px;background:rgba(255,255,255,.1);color:#fff;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:20px}
+.lb__x{position:absolute;top:16px;right:22px;color:#fff;font-size:40px;line-height:1;cursor:pointer;opacity:.9;background:none;border:0}
+.lb__x:hover{opacity:1}
+.lb__nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s}
+.lb__nav:hover{background:rgba(255,255,255,.26)}
+.lb__nav.prev{left:18px}.lb__nav.next{right:18px}
+.lb__nav svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:600px){.lb__nav{width:42px;height:42px}.lb__nav.prev{left:8px}.lb__nav.next{right:8px}}
+
+/* CONTACT */
+.contact{background:var(--cream)}
+.contact .h2c{font-family:var(--serif);font-size:clamp(26px,5vw,38px);color:var(--graphite);line-height:1.08;margin-top:10px}
+.cgrid{display:grid;grid-template-columns:1fr;gap:32px;margin-top:28px}
+.cgrid .formcard{order:-1}
+.cinfo .lead2{font-size:15px;color:var(--ink);margin:0 0 14px}
+.cinfo .line{font-size:14px;color:var(--ink);margin-top:10px}
+.cinfo .line b{color:var(--graphite);font-weight:600}
+.cmaplabel{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:20px;margin-bottom:8px}
+.cmap{border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.cmap iframe{width:100%;height:240px;border:0;display:block}
+.contact .formcard{background:#fff}
+
+/* TABS */
+.tabs{margin-top:8px}
+.tabbtns{display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.tabbtn{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;padding:12px 6px;margin-bottom:-1px;cursor:pointer}
+.tabbtn.active{color:var(--graphite);border-bottom-color:var(--sage)}
+.tabpanel{display:none}
+.tabpanel.active{display:block}
+.rooms2{display:grid;grid-template-columns:1fr;gap:28px}
+.rtable h4{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-d);margin-bottom:10px}
+.rrow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:14px}
+.rrow span:last-child{color:var(--graphite);font-weight:600;white-space:nowrap}
+.rsum{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:24px;padding-top:20px;border-top:2px solid var(--sage)}
+.rsum .lbl{font-family:var(--sans);font-weight:700;font-size:15.5px;letter-spacing:.02em;color:var(--graphite)}
+.rsum .val{font-family:var(--serif);font-size:28px;color:var(--graphite);white-space:nowrap}
+.spec{display:grid;grid-template-columns:1fr;gap:0}
+.spec .it{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f0f0f0}
+.spec .it b{font-family:var(--sans);font-weight:600;color:var(--graphite);min-width:170px;font-size:14px}
+.spec .it span{font-size:14px;color:var(--ink)}
+
+/* POPUP / FOOTER */
+.overlay{position:fixed;inset:0;background:rgba(20,28,26,.5);display:none;align-items:center;justify-content:center;z-index:100;padding:22px}
+.overlay.open{display:flex}
+.modal{background:#fff;border-radius:16px;max-width:420px;width:100%;padding:34px 28px;text-align:center}
+.modal .ok{width:56px;height:56px;border-radius:50%;background:var(--soft);color:var(--sage-d);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px}
+.modal h3{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--graphite);margin-bottom:10px}
+.modal p{font-size:14px;color:var(--ink);margin-bottom:20px}
+.footer{background:var(--graphite);color:#aebbb7;padding:40px 0;margin-top:40px}
+.footer__grid{display:flex;flex-direction:column;gap:26px}
+.footer__dev img{height:36px;margin-bottom:12px;display:block}
+.footer .small{font-size:12px;margin-top:8px}
+.footer .small a{color:#cdd6d3;text-decoration:underline}
+.footer .small a:hover{color:#fff}
+.footer__home{border-top:1px solid #44524e;padding-top:24px}
+.footer__label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#cdd6d3;margin-bottom:12px}
+.footer__homelogo{height:58px;max-width:100%;width:auto;margin-bottom:14px;display:block}
+.footer__ig{display:inline-flex;align-items:center;gap:8px;color:#cdd6d3;font-size:13px;font-weight:600}
+.footer__ig:hover{color:#fff}
+.footer__ig svg{width:18px;height:18px;fill:currentColor}
+
+@media(min-width:760px){
+  .navlinks{display:flex;order:1;margin-left:auto}
+  .logo{order:0;margin-left:0}
+  .burger{display:none}
+  .nav .row{height:96px}
+  .logo img{height:54px}
+  .gallery__main{aspect-ratio:21/9}
+  .gallery__thumbs{grid-template-columns:repeat(6,1fr)}
+  .thumbcar-track .thumb{flex:0 0 calc((100% - 50px)/6)}
+  .prod{grid-template-columns:1.5fr 1fr;gap:48px;align-items:start}
+  .rooms2{grid-template-columns:1fr 1fr;gap:48px}
+  .spec{grid-template-columns:1fr 1fr;gap:0 48px}
+  .cgrid{grid-template-columns:1fr 1.1fr}
+  .cgrid .formcard{order:0}
+  .footer__grid{flex-direction:row;justify-content:space-between;align-items:flex-start}
+  .footer__home{border-top:0;border-left:1px solid #44524e;padding-top:0;padding-left:44px}
+  .footer__dev img{margin-top:34px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap row">
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('mm').classList.toggle('open')">&#9776;</button>
+    <a class="logo" href="index.html"><img src="assets/pamos-development-horizontal-graphite.svg" alt="PAMOS Development"></a>
+    <nav class="navlinks">
+      <a href="dom.html">Dom</a>
+      <a href="wnetrza.html">Projektowanie wnętrz</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+  <div class="mobilemenu" id="mm">
+    <a href="dom.html">Dom</a>
+    <a href="wnetrza.html">Projektowanie wnętrz</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="index.html">Inwestycja Celinów</a> &nbsp;/&nbsp; Dom wolnostojący</p>
+
+  <!-- GALERIA -->
+  <div class="gallery">
+    <figure class="gallery__mainwrap" onclick="openLB(0)">
+      <img id="mainImg" class="gallery__main" src="assets/wiz/strefa-dzienna-1.jpg" alt="Strefa dzienna">
+      <figcaption class="gallery__cap" id="mainCap">Strefa dzienna</figcaption>
+    </figure>
+    <p class="gallery__sectlabel">Wizualizacje parteru</p>
+    <div class="gallery__thumbs">
+      <figure class="thumb" onclick="openLB(0)"><img src="assets/wiz/strefa-dzienna-1.jpg" alt="Strefa dzienna"><figcaption>Strefa dzienna</figcaption></figure>
+      <figure class="thumb" onclick="openLB(1)"><img src="assets/wiz/kuchnia-strefa-dzienna.jpg" alt="Kuchnia i strefa dzienna"><figcaption>Kuchnia i strefa dzienna</figcaption></figure>
+      <figure class="thumb" onclick="openLB(2)"><img src="assets/wiz/strefa-dzienna-kominek.jpg" alt="Salon – kominek i schody"><figcaption>Salon – kominek i schody</figcaption></figure>
+      <figure class="thumb" onclick="openLB(3)"><img src="assets/wiz/wejscie-hol.jpg" alt="Wejście i hol"><figcaption>Wejście i hol</figcaption></figure>
+      <figure class="thumb" onclick="openLB(4)"><img src="assets/wiz/lazienka.jpg" alt="Łazienka z toaletą – parter"><figcaption>Łazienka z toaletą – parter</figcaption></figure>
+      <figure class="thumb" onclick="openLB(5)"><img src="assets/wiz/toaleta.jpg" alt="Łazienka z toaletą – parter"><figcaption>Łazienka z toaletą – parter</figcaption></figure>
+    </div>
+    <p class="gallery__sectlabel">Wizualizacje piętra</p>
+    <div class="thumbcar">
+      <button class="thumbcar-nav prev" type="button" onclick="thumbScroll(-1)" aria-label="Poprzednie"><svg viewBox="0 0 24 24"><polyline points="15 5 8 12 15 19"/></svg></button>
+      <div class="thumbcar-track" id="pietroThumbs">
+        <figure class="thumb" onclick="openLB(6)"><img src="assets/wiz/sypialnia-glowna.jpg" alt="Sypialnia" loading="lazy"><figcaption>Sypialnia</figcaption></figure>
+        <figure class="thumb" onclick="openLB(7)"><img src="assets/wiz/sypialnia.jpg" alt="Sypialnia" loading="lazy"><figcaption>Sypialnia</figcaption></figure>
+        <figure class="thumb" onclick="openLB(8)"><img src="assets/wiz/gabinet.jpg" alt="Gabinet" loading="lazy"><figcaption>Gabinet</figcaption></figure>
+        <figure class="thumb" onclick="openLB(9)"><img src="assets/wiz/pokoj-dziecka-1.jpg" alt="Pokój dziecka" loading="lazy"><figcaption>Pokój dziecka</figcaption></figure>
+        <figure class="thumb" onclick="openLB(10)"><img src="assets/wiz/pokoj-dziecka-3.jpg" alt="Pokój dziecka" loading="lazy"><figcaption>Pokój dziecka</figcaption></figure>
+        <figure class="thumb" onclick="openLB(11)"><img src="assets/wiz/lazienka-pietro-1.jpg" alt="Łazienka – piętro" loading="lazy"><figcaption>Łazienka – piętro</figcaption></figure>
+        <figure class="thumb" onclick="openLB(12)"><img src="assets/wiz/lazienka-pietro-2.jpg" alt="Łazienka – piętro" loading="lazy"><figcaption>Łazienka – piętro</figcaption></figure>
+        <figure class="thumb" onclick="openLB(13)"><img src="assets/wiz/lazienka-przy-sypialni.jpg" alt="Łazienka przy sypialni" loading="lazy"><figcaption>Łazienka przy sypialni</figcaption></figure>
+      </div>
+      <button class="thumbcar-nav next" type="button" onclick="thumbScroll(1)" aria-label="Następne"><svg viewBox="0 0 24 24"><polyline points="9 5 16 12 9 19"/></svg></button>
+    </div>
+  </div>
+
+  <!-- OPIS + CENA + FORMULARZ -->
+  <div class="prod">
+    <div class="pinfo">
+      <p class="kicker">Inwestycja Celinów</p>
+      <h1 class="ptitle">Dom wolnostojący w otulinie lasku</h1>
+      <p class="ploc">Celinów, gm. Dębe Wielkie, pow. miński &nbsp;·&nbsp; ok. 30 km na wschód od Warszawy</p>
+
+      <div class="pricebox">
+        <span class="total">1&nbsp;269&nbsp;000&nbsp;zł</span>
+        <span class="perm">8&nbsp;087&nbsp;zł / m²</span>
+      </div>
+
+      <div class="chips">
+        <span class="chip">156,91 m² pow. użytkowej</span>
+        <span class="chip">5 pokoi · 4 sypialnie</span>
+        <span class="chip">3 łazienki</span>
+        <span class="chip">działka 600 m²</span>
+        <span class="chip">garaż</span>
+        <span class="chip">pompa ciepła</span>
+      </div>
+
+      <p class="pdesc">To dom, który zaprojektowaliśmy z myślą o codzienności, jaką sami chcielibyśmy mieć – w spokojnej okolicy w otulinie lasku, a jednocześnie zaledwie około 30 km od centrum Warszawy. Wolnostojący, na własnej, w pełni ogrodzonej działce 600 m², daje to, czego najtrudniej szukać pod miastem: prywatność, ciszę i przestrzeń tylko dla Twojej rodziny.</p>
+      <p class="pdesc">Sercem domu jest otwarta strefa dzienna o powierzchni 49 m² – salon płynnie połączony z kuchnią i jadalnią, z bezprogowym, przesuwnym przeszkleniem tarasowym, które latem zamienia wnętrze w jedną przestrzeń z ogrodem. Wysokie, potrójnie szklone okna wpuszczają światło przez cały dzień, a ogrzewanie podłogowe w całym domu sprawia, że nawet zimą chodzi się tu boso.</p>
+      <p class="pdesc">Na piętrze odpoczynek ma swoje miejsce: cztery sypialnie, dwie garderoby i osobna pralnia, dzięki którym codzienność jest po prostu prostsza. W całym domu trzy łazienki, a na parterze garaż w bryle budynku. Pompa ciepła, dach z blachy modułowej w grafitowej kolorystyce, automatyczna brama, kamery i przyłącze światłowodu to u nas standard, nie kosztowny dodatek.</p>
+      <p class="pdesc">Dom przekazujemy w wysokim stanie deweloperskim – gotowy, byś nadał mu własny charakter. A jeśli chcesz wprowadzić się do w pełni urządzonego wnętrza, nasz zespół PAMOS Interior Design zaprojektuje je dla Ciebie w każdym detalu.</p>
+    </div>
+
+    <div class="plans">
+      <h3 class="plans-title">Rzuty pomieszczeń</h3>
+      <div class="plan-slide active" id="plan0">
+        <div class="plan-imgwrap">
+          <img src="assets/rzut-parter.jpg" alt="Rzut parteru">
+          <button class="plan-nav next" type="button" onclick="planShow(1)" aria-label="Pokaż rzut piętra"><svg viewBox="0 0 24 24"><polyline points="9 5 16 12 9 19"/></svg></button>
+        </div>
+        <div class="plans__cap">Rzut parteru</div>
+        <div class="plancams">
+          <button class="cam" type="button" onclick="openLB(0)" aria-label="Zobacz strefę dzienną"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.4"/></svg>Strefa dzienna</button>
+          <button class="cam" type="button" onclick="openLB(1)" aria-label="Zobacz kuchnię"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.4"/></svg>Kuchnia</button>
+          <button class="cam" type="button" onclick="openLB(3)" aria-label="Zobacz wejście i hol"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.4"/></svg>Wejście</button>
+          <button class="cam" type="button" onclick="openLB(4)" aria-label="Zobacz łazienkę z toaletą"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.4"/></svg>Łazienka z toaletą</button>
+        </div>
+        <p class="planhint">Kliknij ikonę aparatu, aby zobaczyć wizualizację pomieszczenia. Strzałką przejdziesz do rzutu piętra.</p>
+      </div>
+      <div class="plan-slide" id="plan1">
+        <div class="plan-imgwrap">
+          <img src="assets/rzut-pietro.jpg" alt="Rzut piętra">
+          <button class="plan-nav prev" type="button" onclick="planShow(0)" aria-label="Pokaż rzut parteru"><svg viewBox="0 0 24 24"><polyline points="15 5 8 12 15 19"/></svg></button>
+        </div>
+        <div class="plans__cap">Rzut piętra</div>
+        <div class="plancams">
+          <button class="cam" type="button" onclick="openLB(6)" aria-label="Zobacz sypialnię"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.4"/></svg>Sypialnia</button>
+          <button class="cam" type="button" onclick="openLB(8)" aria-label="Zobacz gabinet"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.4"/></svg>Gabinet</button>
+          <button class="cam" type="button" onclick="openLB(9)" aria-label="Zobacz pokój dziecka"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.4"/></svg>Pokój dziecka</button>
+          <button class="cam" type="button" onclick="openLB(11)" aria-label="Zobacz łazienkę"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.4"/></svg>Łazienka</button>
+          <button class="cam" type="button" onclick="openLB(13)" aria-label="Zobacz łazienkę przy sypialni"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.4"/></svg>Łazienka przy sypialni</button>
+        </div>
+        <p class="planhint">Kliknij ikonę aparatu, aby zobaczyć wizualizację pomieszczenia. Strzałką wrócisz do rzutu parteru.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ZAKŁADKI -->
+<section class="section">
+  <div class="wrap">
+    <div class="tabs">
+      <div class="tabbtns" id="tabbtns">
+        <button class="tabbtn active" onclick="showTab(0)">Układ pomieszczeń</button>
+        <button class="tabbtn" onclick="showTab(1)">Standard i technologia</button>
+        <button class="tabbtn" onclick="showTab(2)">Działka i lokalizacja</button>
+        <button class="tabbtn" onclick="showTab(3)">Media i instalacje</button>
+      </div>
+
+      <div class="tabpanel active">
+        <div class="rooms2">
+          <div class="rtable">
+            <h4>Parter</h4>
+            <div class="rrow"><span>Przedsionek</span><span>6,4 m²</span></div>
+            <div class="rrow"><span>Hol</span><span>2,9 m²</span></div>
+            <div class="rrow"><span>Łazienka / WC</span><span>2,1 m²</span></div>
+            <div class="rrow"><span>Pokój dzienny</span><span>28,1 m²</span></div>
+            <div class="rrow"><span>Kuchnia</span><span>9,9 m²</span></div>
+            <div class="rrow"><span>Kotłownia</span><span>8,7 m²</span></div>
+            <div class="rrow"><span>Garaż</span><span>18,8 m²</span></div>
+            <div class="rrow"><span>Taras</span><span>16,0 m²</span></div>
+          </div>
+          <div class="rtable">
+            <h4>Piętro</h4>
+            <div class="rrow"><span>Schody</span><span>5,7 m²</span></div>
+            <div class="rrow"><span>Korytarz</span><span>8,8 m²</span></div>
+            <div class="rrow"><span>Sypialnia</span><span>13,2 m²</span></div>
+            <div class="rrow"><span>Sypialnia</span><span>13,3 m²</span></div>
+            <div class="rrow"><span>Sypialnia</span><span>10,4 m²</span></div>
+            <div class="rrow"><span>Sypialnia</span><span>12,4 m²</span></div>
+            <div class="rrow"><span>Łazienka</span><span>5,7 m²</span></div>
+            <div class="rrow"><span>Łazienka</span><span>4,5 m²</span></div>
+            <div class="rrow"><span>Pralnia</span><span>2,2 m²</span></div>
+            <div class="rrow"><span>Garderoba</span><span>1,9 m²</span></div>
+            <div class="rrow"><span>Garderoba</span><span>1,9 m²</span></div>
+          </div>
+        </div>
+        <div class="rsum"><span class="lbl">Powierzchnia użytkowa łącznie</span><span class="val">156,91 m²</span></div>
+      </div>
+
+      <div class="tabpanel">
+        <div class="spec">
+          <div class="it"><b>Fundamenty</b><span>Ławy i stopy żelbetowe, beton B30 W8 wodoszczelny, izolacja XPS 15 cm.</span></div>
+          <div class="it"><b>Ściany i stropy</b><span>Bloczki ceramiczne na klej, stropy żelbetowe, ścianki działowe z gazobetonu/ceramiki.</span></div>
+          <div class="it"><b>Dach</b><span>Blacha modułowa Budmat Wenecja w kolorze grafit, pełne obróbki, rynny stalowe lakierowane.</span></div>
+          <div class="it"><b>Okna</b><span>5–7 komorowe, 3-szybowe, dwukolorowe; tarasowe w systemie HS — bezprogowe.</span></div>
+          <div class="it"><b>Brama i drzwi</b><span>Brama garażowa stalowa, ocieplana, z napędem; drzwi wejściowe.</span></div>
+          <div class="it"><b>Elewacja</b><span>Styropian 20 cm, tynk silikatowy z elementami deski elewacyjnej i okładziną ceramiczną.</span></div>
+          <div class="it"><b>Ogrzewanie</b><span>Pompa ciepła, ogrzewanie podłogowe wodne w całym domu, grzejnik w garażu.</span></div>
+          <div class="it"><b>Wykończenie</b><span>Tynki gipsowe, wylewki pod posadzki, poddasze ocieplone pianą PUR.</span></div>
+        </div>
+      </div>
+
+      <div class="tabpanel">
+        <div class="spec">
+          <div class="it"><b>Powierzchnia działki</b><span>600 m², w pełni ogrodzona (ogrodzenie panelowe z bramą i furtką).</span></div>
+          <div class="it"><b>Brama</b><span>Otwierana automatycznie na pilota.</span></div>
+          <div class="it"><b>Zagospodarowanie</b><span>Teren uporządkowany, niwelacja, posiana trawa, wydzielony śmietnik.</span></div>
+          <div class="it"><b>Dojścia</b><span>Podjazd do garażu, wejście i schody z kostki brukowej, opaska budynku.</span></div>
+          <div class="it"><b>Otoczenie</b><span>Dodatkowa furtka od strony lasu; spokojna okolica w otulinie lasku.</span></div>
+          <div class="it"><b>Lokalizacja</b><span>Celinów, gm. Dębe Wielkie, pow. miński — ok. 30 km na wschód od Warszawy.</span></div>
+        </div>
+      </div>
+
+      <div class="tabpanel">
+        <div class="spec">
+          <div class="it"><b>Prąd</b><span>Przyłącze doprowadzone na działkę.</span></div>
+          <div class="it"><b>Woda</b><span>Ujęcie wody doprowadzone do budynku.</span></div>
+          <div class="it"><b>Kanalizacja</b><span>Szambo o pojemności 10 m³.</span></div>
+          <div class="it"><b>Ogrzewanie</b><span>Pompa ciepła, kompletna kotłownia.</span></div>
+          <div class="it"><b>Światłowód</b><span>Przyłącze przygotowane.</span></div>
+          <div class="it"><b>Bezpieczeństwo</b><span>2 kamery zewnętrzne, wyjście do oświetlenia zewnętrznego, zawory ogrodowe.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact section" id="kontakt">
+  <div class="wrap">
+    <p class="kicker">Kontakt</p>
+    <h2 class="h2c">Zainteresowany tym domem?</h2>
+    <div class="cgrid">
+      <div class="cinfo">
+        <p class="lead2">Zostaw kontakt, a odezwiemy się i umówimy dogodny termin oględzin na miejscu inwestycji.</p>
+        <p class="line"><b>PAMOS Development Sp. z o.o.</b></p>
+        <p class="line">NIP 951 26 32 937</p>
+        <p class="cmaplabel">Lokalizacja inwestycji</p>
+        <div class="cmap">
+          <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Celin%C3%B3w%20Babiego%20Lata%2C%20D%C4%99be%20Wielkie&z=12&output=embed" title="Lokalizacja inwestycji — Celinów"></iframe>
+        </div>
+      </div>
+      <form class="formcard" id="contactForm">
+        <input type="hidden" name="access_key" value="ebe17453-07dc-42cd-bff4-a65a6dfa8d95">
+        <input type="hidden" name="subject" value="Zapytanie o dom — Inwestycja Celinów">
+        <input type="hidden" name="from_name" value="Strona PAMOS Development — karta domu">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+        <div class="field"><label for="name">Imię i nazwisko</label><input id="name" name="name" type="text" required></div>
+        <div class="field"><label for="phone">Nr telefonu</label><input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]{9}" maxlength="9" minlength="9" title="Wpisz 9 cyfr numeru telefonu" oninput="this.value=this.value.replace(/\D/g,'').slice(0,9)" required></div>
+        <div class="field"><label for="email">Adres e-mail</label><input id="email" name="email" type="email" required></div>
+        <div class="field"><label for="msg">Wiadomość</label><textarea id="msg" name="message" placeholder="W czym możemy pomóc?" required></textarea></div>
+        <button class="btn solid" type="submit">Wyślij zapytanie</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__dev">
+      <img src="assets/pamos-development-horizontal-white.svg" alt="PAMOS Development">
+      <p class="small">PAMOS Development Sp. z o.o. · NIP 951 26 32 937</p>
+      <p class="small">© 2026 PAMOS Development. Wszelkie prawa zastrzeżone.</p>
+      <p class="small"><a href="polityka-prywatnosci.html">Polityka prywatności</a> · <a href="#" onclick="if(window.openCookieSettings){openCookieSettings();}return false;">Ustawienia cookies</a></p>
+    </div>
+    <div class="footer__home">
+      <p class="footer__label">Nasz showroom z meblami</p>
+      <a href="https://www.instagram.com/pamos_home/" target="_blank" rel="noopener" aria-label="PAMOS HOME na Instagramie">
+        <img class="footer__homelogo" src="assets/pamos-home-white-tight.svg" alt="PAMOS HOME">
+      </a>
+      <a class="footer__ig" href="https://www.instagram.com/pamos_home/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91a5.9 5.9 0 0 0 1.38 2.13 5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a6.15 6.15 0 0 0 3.51-3.51c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84M12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"/><circle cx="18.41" cy="5.59" r="1.44"/></svg>
+        pamos_home
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="ok">&#10003;</div>
+    <h3>Dziękujemy</h3>
+    <p>Twoja wiadomość została do nas wysłana. Skontaktujemy się z Tobą jak najszybciej to możliwe.</p>
+    <button class="btn solid" style="width:auto;padding:12px 26px" onclick="document.getElementById('overlay').classList.remove('open')">Zamknij</button>
+  </div>
+</div>
+
+<div class="lb" id="lightbox" onclick="if(event.target===this)closeLB()">
+  <button class="lb__x" type="button" aria-label="Zamknij" onclick="closeLB()">&times;</button>
+  <button class="lb__nav prev" type="button" aria-label="Poprzednie zdjęcie" onclick="lbNav(-1)"><svg viewBox="0 0 24 24"><polyline points="15 5 8 12 15 19"/></svg></button>
+  <button class="lb__nav next" type="button" aria-label="Następne zdjęcie" onclick="lbNav(1)"><svg viewBox="0 0 24 24"><polyline points="9 5 16 12 9 19"/></svg></button>
+  <figure class="lb__fig">
+    <img id="lbImg" src="" alt="">
+    <figcaption class="lb__cap" id="lbCap"></figcaption>
+  </figure>
+</div>
+
+<script>
+var GAL=[
+ {src:'assets/wiz/strefa-dzienna-1.jpg',cap:'Strefa dzienna'},
+ {src:'assets/wiz/kuchnia-strefa-dzienna.jpg',cap:'Kuchnia i strefa dzienna'},
+ {src:'assets/wiz/strefa-dzienna-kominek.jpg',cap:'Salon – kominek i schody'},
+ {src:'assets/wiz/wejscie-hol.jpg',cap:'Wejście i hol'},
+ {src:'assets/wiz/lazienka.jpg',cap:'Łazienka z toaletą – parter'},
+ {src:'assets/wiz/toaleta.jpg',cap:'Łazienka z toaletą – parter'},
+ {src:'assets/wiz/sypialnia-glowna.jpg',cap:'Sypialnia'},
+ {src:'assets/wiz/sypialnia.jpg',cap:'Sypialnia'},
+ {src:'assets/wiz/gabinet.jpg',cap:'Gabinet'},
+ {src:'assets/wiz/pokoj-dziecka-1.jpg',cap:'Pokój dziecka'},
+ {src:'assets/wiz/pokoj-dziecka-3.jpg',cap:'Pokój dziecka'},
+ {src:'assets/wiz/lazienka-pietro-1.jpg',cap:'Łazienka – piętro'},
+ {src:'assets/wiz/lazienka-pietro-2.jpg',cap:'Łazienka – piętro'},
+ {src:'assets/wiz/lazienka-przy-sypialni.jpg',cap:'Łazienka przy sypialni'}
+];
+var mainIdx=0, lbIdx=0;
+function showMain(i){mainIdx=i;var m=document.getElementById('mainImg');m.src=GAL[i].src;m.alt=GAL[i].cap;document.getElementById('mainCap').textContent=GAL[i].cap;document.querySelectorAll('#thumbs img').forEach(function(t,n){t.classList.toggle('active',n===i);});}
+function openLB(i){lbIdx=i;renderLB();document.getElementById('lightbox').classList.add('open');}
+function renderLB(){var im=document.getElementById('lbImg');im.src=GAL[lbIdx].src;im.alt=GAL[lbIdx].cap;document.getElementById('lbCap').textContent=GAL[lbIdx].cap;}
+function lbNav(d){lbIdx=(lbIdx+d+GAL.length)%GAL.length;renderLB();}
+function closeLB(){document.getElementById('lightbox').classList.remove('open');}
+function planShow(i){document.getElementById('plan0').classList.toggle('active',i===0);document.getElementById('plan1').classList.toggle('active',i===1);}
+function thumbScroll(dir){
+  var t=document.getElementById('pietroThumbs');if(!t)return;
+  var max=t.scrollWidth-t.clientWidth-2;
+  if(dir>0 && t.scrollLeft>=max){ t.scrollTo({left:0,behavior:'smooth'}); return; }
+  if(dir<0 && t.scrollLeft<=2){ t.scrollTo({left:t.scrollWidth,behavior:'smooth'}); return; }
+  t.scrollBy({left:dir*Math.round(t.clientWidth*0.8),behavior:'smooth'});
+}
+document.addEventListener('keydown',function(e){var o=document.getElementById('lightbox');if(!o.classList.contains('open'))return;if(e.key==='Escape')closeLB();else if(e.key==='ArrowLeft')lbNav(-1);else if(e.key==='ArrowRight')lbNav(1);});
+function showTab(i){
+  document.querySelectorAll('.tabbtn').forEach((b,n)=>b.classList.toggle('active',n===i));
+  document.querySelectorAll('.tabpanel').forEach((p,n)=>p.classList.toggle('active',n===i));
+}
+document.getElementById('contactForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var form=e.target, data=new FormData(form);
+  try{
+    var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:data});
+    var json=await res.json();
+    if(json.success){ form.reset(); document.getElementById('overlay').classList.add('open'); }
+    else { alert('Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na pamosdevelopment@protonmail.com'); }
+  }catch(err){ alert('Błąd połączenia. Spróbuj ponownie lub napisz na pamosdevelopment@protonmail.com'); }
+});
+</script>
+
+</body>
+</html>

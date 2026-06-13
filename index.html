@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAMOS Development – Inwestycja Celinów</title>
+<meta name="description" content="Dom jednorodzinny 157 m² w Celinowie, gm. Dębe Wielkie. Wysoki standard deweloperski – pompa ciepła, ogrzewanie podłogowe, działka 600 m².">
+<script src="assets/cookies.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --graphite:#2f3b39; --sage:#68af9f; --sage-d:#5b9d8e; --ink:#3a4744; --muted:#90a39d;
+  --line:#ececec; --bg:#ffffff; --soft:#eef4f1; --cream:#f7faf8;
+  --serif:'Gilda Display',Georgia,serif;
+  --sans:'Montserrat','Gotham',Arial,sans-serif; /* Gotham docelowo */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 22px}
+.kicker{font-weight:600;font-size:11px;letter-spacing:.34em;color:#5d7d74;text-transform:uppercase}
+.h2{font-family:var(--serif);font-size:clamp(28px,5.4vw,42px);color:var(--graphite);line-height:1.08;margin-top:12px}
+.lead{font-size:15px;color:var(--ink);margin-top:16px;max-width:60ch}
+.section{padding:64px 0}
+.todo{display:inline-block;font-size:11px;letter-spacing:.04em;color:#6c857d;background:#eaf3ef;border:1px dashed #bcd4cc;border-radius:6px;padding:4px 10px;margin-top:10px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:60;background:#fffffff2;backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid #eee}
+.nav .row{display:flex;align-items:center;height:70px}
+.logo{order:0;margin-left:0;display:flex;align-items:center}
+.logo img{height:34px;display:block}
+.navlinks{display:none;gap:28px;font-size:12.5px;letter-spacing:.03em;color:var(--ink)}
+.navlinks a:hover{color:var(--sage)}
+.burger{order:1;margin-left:auto;font-size:24px;color:var(--graphite);background:none;border:0;cursor:pointer;line-height:1}
+.mobilemenu{display:none;flex-direction:column;gap:4px;padding:8px 22px 16px;border-bottom:1px solid #eee;background:#fff}
+.mobilemenu a{padding:12px 0;font-size:14px;border-bottom:1px solid #f3f3f3}
+.mobilemenu.open{display:flex}
+
+/* HERO */
+.hero{position:relative;min-height:calc(100vh - 70px);min-height:calc(100svh - 70px);display:flex;align-items:flex-end;
+  background:linear-gradient(120deg,#dfeae6,#eaf2ef 60%,#e3ede9);overflow:hidden}
+.hero .wrap{padding-left:32px;padding-right:32px}
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero__shade{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(20,28,26,.18) 0%,rgba(20,28,26,0) 32%,rgba(20,28,26,.30) 62%,rgba(20,28,26,.66) 100%)}
+.hero__topbar{position:absolute;top:0;left:0;right:0;z-index:3;padding-top:26px}
+.hero__price{display:inline-block;background:var(--sage);color:#fff;border-radius:12px;
+  padding:11px 18px;box-shadow:0 8px 22px rgba(47,59,57,.18)}
+.hero__price span{display:block;font-family:var(--sans);font-weight:600;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.95}
+.hero__price b{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.05;letter-spacing:.01em}
+.hero__inner{position:relative;z-index:2;width:100%}
+.hero__text{padding-bottom:84px}
+.kicker--badge{display:inline-block;background:var(--sage);color:#fff;padding:7px 14px;border-radius:7px;
+  font-weight:600;font-size:11px;letter-spacing:.28em;text-transform:uppercase}
+.hero__title{font-family:var(--serif);font-size:clamp(36px,9vw,60px);color:#fff;line-height:1.04;margin-top:18px}
+.hero__sub{font-family:var(--sans);font-weight:700;font-size:clamp(14px,3.6vw,16px);color:#fff;margin-top:16px;max-width:36ch;letter-spacing:.01em}
+.hero__btns{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.btn.ghost--photo{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.85)}
+.btn.ghost--photo:hover{background:rgba(255,255,255,.22)}
+
+/* CTA BAR */
+.ctabar{position:relative;z-index:4;margin:20px auto 0;background:#fff;border:1px solid var(--line);
+  border-radius:14px;box-shadow:0 14px 36px rgba(47,59,57,.12);padding:18px 22px;
+  display:flex;justify-content:center}
+.btns{display:flex;flex-direction:column;gap:10px;width:100%;max-width:520px}
+.btn{font-family:var(--sans);font-weight:600;font-size:14px;padding:14px 22px;border-radius:9px;
+  cursor:pointer;border:1px solid var(--sage);text-align:center;transition:.15s}
+.btn.solid{background:var(--sage);color:#fff}
+.btn.solid:hover{background:var(--sage-d)}
+.btn.ghost{background:#fff;color:var(--graphite)}
+.btn.ghost:hover{background:var(--soft)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin:40px 0 0}
+.stat{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:22px 8px}
+.stat:nth-child(odd){border-right:1px solid #eee}
+.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid #eee}
+.stat .n{font-family:var(--serif);font-size:52px;color:var(--graphite);line-height:1;
+  height:56px;display:flex;align-items:baseline;justify-content:center;white-space:nowrap}
+.stat .n i{font-style:normal;font-size:22px;color:var(--sage);margin-left:2px}
+.stat .l{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);margin-top:12px}
+
+/* IDEA */
+.idea{background:var(--cream)}
+.idea .h2{max-width:18ch}
+.idea--wide .lead{max-width:none}
+.idea--wide .h2{max-width:none}
+.idea--exterior .lead{max-width:none}
+
+/* ROOMS */
+.room{display:grid;grid-template-columns:1fr;gap:24px;align-items:center;margin-top:48px}
+.room:first-of-type{margin-top:36px}
+.room__media{position:relative;border-radius:14px;overflow:hidden;background:#e6efeb;aspect-ratio:4/3}
+.room__media img{width:100%;height:100%;object-fit:cover}
+.room__ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  text-align:center;color:#7d958d;font-size:12px;padding:20px;background:repeating-linear-gradient(45deg,#eef4f1,#eef4f1 14px,#e7efeb 14px,#e7efeb 28px)}
+.room__name{font-family:var(--serif);font-size:clamp(24px,4.6vw,32px);color:var(--graphite);line-height:1.1}
+.room__meta{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);font-weight:600;margin-bottom:8px}
+.room__desc{font-size:14.5px;color:var(--ink);margin-top:14px}
+
+/* STANDARD */
+.std{background:var(--graphite);color:#dfe7e4}
+.std .kicker{color:#8fb6ac}
+.std .h2{color:#fff}
+.std .lead{color:#c3cfcb;max-width:none}
+.feat-carousel{position:relative;margin-top:30px}
+.feat{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.feat::-webkit-scrollbar{display:none}
+.feat-slide{display:flex;flex-direction:column;gap:3px;min-width:100%;scroll-snap-align:start;background:#52635e;border:3px solid #52635e;border-radius:14px;overflow:hidden}
+.feat__i{background:#2f3b39;padding:22px 20px}
+.feat__i h4{font-family:var(--sans);font-weight:600;font-size:16.5px;color:#fff;margin-bottom:5px}
+.feat__i p{font-size:14px;color:#a7bbb5}
+.feat-arrow{position:absolute;top:50%;right:-2px;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+.feat-arrow svg{width:20px;height:20px;fill:none;stroke:var(--sage);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.feat-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.featdot{width:8px;height:8px;border-radius:50%;background:#5b6b66;border:0;cursor:pointer;padding:0;transition:.18s}
+.featdot.active{background:var(--sage);width:22px;border-radius:5px}
+
+/* INTERIOR */
+.id{background:var(--soft)}
+.id .lead{max-width:none}
+.idcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px 26px;text-align:center;max-width:560px;width:100%;flex-shrink:0}
+.offerwrap{display:flex;flex-direction:column;align-items:center;gap:22px;margin-top:28px}
+.scopebtn{font-family:var(--sans);font-weight:600;font-size:14px;color:var(--sage-d);text-decoration:underline;text-underline-offset:3px;background:none;border:0;cursor:pointer;padding:0}
+.scope{display:none;text-align:left;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;max-width:600px;width:100%}
+.offerwrap.open .scope{display:block}
+.scope__title{font-family:var(--serif);font-weight:400;font-size:20px;color:var(--graphite);margin-bottom:14px}
+.scope__list{list-style:none;display:grid;grid-template-columns:1fr;gap:11px}
+.scope__list li{position:relative;padding-left:26px;font-size:13.5px;color:var(--ink);line-height:1.45}
+.scope__list li::before{content:"✓";position:absolute;left:0;top:0;color:var(--sage-d);font-weight:700}
+.scope__note{font-size:12px;color:var(--muted);margin-top:14px;font-style:italic}
+@media(min-width:880px){
+  .offerwrap.open{flex-direction:row;align-items:stretch;justify-content:center;gap:28px}
+  .offerwrap.open .scope{max-width:620px}
+  .offerwrap.open .scope__list{grid-template-columns:1fr 1fr;gap:11px 22px}
+}
+.idprice{display:flex;align-items:baseline;justify-content:center;gap:14px;margin:18px 0 6px}
+.idprice .old{font-size:20px;color:#aeb9b6;text-decoration:line-through}
+.idprice .new{font-family:var(--serif);font-size:40px;color:var(--graphite)}
+
+/* CONTACT */
+.contact{background:var(--cream)}
+.cgrid{display:grid;grid-template-columns:1fr;gap:32px;margin-top:32px}
+.cgrid .form{order:-1}
+.cinfo .line{font-size:14px;color:var(--ink);margin-top:10px}
+.cinfo .line b{color:var(--graphite);font-weight:600}
+.cinfo a{color:var(--sage-d)}
+.cmaplabel{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:20px;margin-bottom:8px}
+.cmap{border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.cmap iframe{width:100%;height:240px;border:0;display:block}
+.form{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;letter-spacing:.04em;color:var(--muted);margin-bottom:6px}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:14px;color:var(--graphite);
+  border:1px solid #dde6e2;border-radius:9px;padding:13px 14px;background:#fff;outline:none}
+.field input:focus,.field textarea:focus{border-color:var(--sage)}
+.field textarea{resize:vertical;min-height:110px}
+.form .btn{width:100%}
+.hp{position:absolute;left:-9999px}
+
+/* POPUP */
+.overlay{position:fixed;inset:0;background:rgba(20,28,26,.5);display:none;align-items:center;justify-content:center;z-index:100;padding:22px}
+.overlay.open{display:flex}
+.modal{background:#fff;border-radius:16px;max-width:420px;width:100%;padding:34px 28px;text-align:center}
+.modal .ok{width:56px;height:56px;border-radius:50%;background:var(--soft);color:var(--sage-d);
+  display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px}
+.modal h3{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--graphite);margin-bottom:10px}
+.modal p{font-size:14px;color:var(--ink);margin-bottom:20px}
+
+/* FOOTER */
+.footer{background:var(--graphite);color:#aebbb7;padding:40px 0}
+.footer__grid{display:flex;flex-direction:column;gap:26px}
+.footer__dev img{height:36px;margin-bottom:12px;display:block}
+.footer .small{font-size:12px;margin-top:8px}
+.footer .small a{color:#cdd6d3;text-decoration:underline}
+.footer .small a:hover{color:#fff}
+.footer__home{border-top:1px solid #44524e;padding-top:24px}
+.footer__label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#cdd6d3;margin-bottom:12px}
+.footer__homelogo{height:58px;max-width:100%;width:auto;margin-bottom:14px;display:block}
+.footer__ig{display:inline-flex;align-items:center;gap:8px;color:#cdd6d3;font-size:13px;font-weight:600}
+.footer__ig:hover{color:#fff}
+.footer__ig svg{width:18px;height:18px;fill:currentColor}
+
+/* LIGHTBOX */
+.lbimg{cursor:zoom-in}
+.lb{position:fixed;inset:0;background:rgba(20,28,26,.88);display:none;align-items:center;justify-content:center;z-index:120;padding:24px;cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:95%;max-height:92%;border-radius:10px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+.lb__x{position:absolute;top:16px;right:24px;color:#fff;font-size:38px;line-height:1;cursor:pointer;opacity:.85}
+.lb__x:hover{opacity:1}
+
+@media(min-width:760px){
+  .navlinks{display:flex;order:1;margin-left:auto}
+  .logo{order:0;margin-left:0}
+  .burger{display:none}
+  .nav .row{height:96px}
+  .logo img{height:54px}
+  .hero{min-height:calc(100vh - 96px);min-height:calc(100svh - 96px)}
+  .hero .wrap{padding-left:48px;padding-right:48px}
+  .hero__text{padding-bottom:110px}
+  .hero__sub{max-width:none;white-space:nowrap}
+  .hero__btns{flex-direction:row;margin-top:26px}
+  .ctabar{margin:24px auto 0;padding:18px 22px}
+  .idea--wide{padding:38px 0}
+  .idea--wide .h2{white-space:nowrap}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .stat{border-bottom:none!important}
+  .stat:nth-child(odd){border-right:none}
+  .stat:not(:last-child){border-right:1px solid #eee}
+  .room{grid-template-columns:1fr 1fr;gap:48px}
+  .room--rev .room__media{order:2}
+  .feat-carousel{margin-top:36px}
+  .feat{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;background:#52635e;border:3px solid #52635e;border-radius:14px;overflow:hidden}
+  .feat-slide{display:contents}
+  .feat-arrow,.feat-dots{display:none}
+  .cgrid{grid-template-columns:1fr 1.1fr}
+  .cgrid .form{order:0}
+  .idcard{padding:40px}
+  .footer__grid{flex-direction:row;justify-content:space-between;align-items:flex-start}
+  .footer__home{border-top:0;border-left:1px solid #44524e;padding-top:0;padding-left:44px}
+  .footer__dev img{margin-top:34px}
+}
+@media(min-width:1040px){
+  .feat{grid-template-columns:repeat(4,1fr)}
+  .idea--exterior .h2{white-space:nowrap;font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap row">
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('mm').classList.toggle('open')">&#9776;</button>
+    <a class="logo" href="#top"><img src="assets/pamos-development-horizontal-graphite.svg" alt="PAMOS Development"></a>
+    <nav class="navlinks">
+      <a href="dom.html">Dom</a>
+      <a href="wnetrza.html">Projektowanie wnętrz</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+  <div class="mobilemenu" id="mm">
+    <a href="dom.html">Dom</a>
+    <a href="wnetrza.html">Projektowanie wnętrz</a>
+    <a href="#kontakt" onclick="document.getElementById('mm').classList.remove('open')">Kontakt</a>
+  </div>
+</header>
+
+<span id="top"></span>
+
+<!-- HERO -->
+<section class="hero hero--photo" id="inwestycja">
+  <img class="hero__img" src="assets/wizualizacja-salon.jpg" alt="Salon – Inwestycja Celinów">
+  <div class="hero__shade"></div>
+
+  <div class="hero__topbar">
+    <div class="wrap">
+      <div class="hero__price"><span>cena za m²</span><b>8&nbsp;087&nbsp;zł/m²</b></div>
+    </div>
+  </div>
+
+  <div class="hero__inner">
+    <div class="wrap hero__text">
+      <span class="kicker--badge">INWESTYCJA CELINÓW</span>
+      <h1 class="hero__title">Dom jednorodzinny<br>w otulinie lasku</h1>
+      <p class="hero__sub">Dom wolnostojący 157 m² · działka 600 m² · gm. Dębe Wielkie</p>
+      <div class="hero__btns">
+        <a class="btn solid" href="#kontakt">Umów się na wizytę</a>
+        <a class="btn ghost ghost--photo" href="dom.html">Zobacz ofertę domu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="stats">
+    <div class="stat"><div class="n">156,91<i>m²</i></div><div class="l">Powierzchnia</div></div>
+    <div class="stat"><div class="n">5</div><div class="l">Pokoi</div></div>
+    <div class="stat"><div class="n">3</div><div class="l">Łazienki</div></div>
+    <div class="stat"><div class="n">600<i>m²</i></div><div class="l">Działka</div></div>
+  </section>
+</div>
+
+<!-- IDEA -->
+<section class="idea section idea--wide">
+  <div class="wrap">
+    <p class="kicker">Nasza idea</p>
+    <h2 class="h2">Dom, jakiego sami szukaliśmy</h2>
+    <p class="lead">Budujemy w miejscu, w którym sami chcielibyśmy mieszkać – z materiałów i rozwiązań, które wybralibyśmy dla własnej rodziny. Pompa ciepła, ogrzewanie podłogowe w całym domu, potrójnie szklone okna i bezprogowe przeszklenia tarasowe to u nas standard, nie kosztowna opcja.</p>
+  </div>
+</section>
+
+<!-- ROOMS / GALERIA -->
+<section class="section" id="wnetrza-galeria">
+  <div class="wrap">
+    <p class="kicker">Wnętrza i przestrzeń</p>
+    <h2 class="h2">Zajrzyj do środka</h2>
+
+    <div class="room">
+      <div class="room__media"><img src="assets/wizualizacja-salon.jpg" alt="Salon otwarty na kuchnię"></div>
+      <div class="room__info">
+        <div class="room__meta">Strefa dzienna · 49 m²</div>
+        <h3 class="room__name">Salon pełen światła</h3>
+        <p class="room__desc">Otwarty na kuchnię i jadalnię, z bezprogowym wyjściem na taras. Wysokie, potrójnie szklone okna wpuszczają słońce przez cały dzień, a ogrzewanie podłogowe sprawia, że nawet zimą chodzi się tu boso. To serce domu – miejsce, w którym dzień się zaczyna i kończy.</p>
+      </div>
+    </div>
+
+    <div class="room room--rev">
+      <div class="room__media">
+        <img src="assets/wiz/kuchnia-strefa-dzienna.jpg" alt="Kuchnia otwarta na strefę dzienną">
+      </div>
+      <div class="room__info">
+        <div class="room__meta">Kuchnia · 9,9 m²</div>
+        <h3 class="room__name">Kuchnia, która łączy</h3>
+        <p class="room__desc">Otwarta na salon, z wyspą i miejscem na rodzinny stół. Dość przestrzeni, by gotować razem, i dość spokoju, by przy porannej kawie patrzeć na ogród.</p>
+      </div>
+    </div>
+
+    <div class="room">
+      <div class="room__media">
+        <img src="assets/wiz/sypialnia-glowna.jpg" alt="Sypialnia" loading="lazy">
+      </div>
+      <div class="room__info">
+        <div class="room__meta">Piętro · 4 sypialnie</div>
+        <h3 class="room__name">Góra tylko dla odpoczynku</h3>
+        <p class="room__desc">Całe piętro należy do ciszy: cztery sypialnie, dwie garderoby i osobna pralnia, by codzienność była prosta. Sypialnia główna z własną garderobą i widokiem na zieleń.</p>
+      </div>
+    </div>
+
+    <div class="room room--rev">
+      <div class="room__media">
+        <img src="assets/wiz/lazienka-pietro-1.jpg" alt="Łazienka na piętrze" loading="lazy">
+      </div>
+      <div class="room__info">
+        <div class="room__meta">3 łazienki</div>
+        <h3 class="room__name">Łazienki dla całej rodziny (i gości)</h3>
+        <p class="room__desc">Dwie pełne łazienki na piętrze i wygodne WC na parterze. Instalacje i wylewki przygotowane pod Twój wybór płytek i armatury – albo pod gotowy projekt od PAMOS Interior Design.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BRYŁA / OTOCZENIE -->
+<section class="idea section idea--exterior">
+  <div class="wrap">
+    <p class="kicker">Bryła i otoczenie</p>
+    <h2 class="h2">Taras, ogród, przestrzeń i okolica, w której się zakochasz</h2>
+    <p class="lead">Nowoczesna bryła z dachem w grafitowej blasze, na w pełni ogrodzonej działce 600 m². Bezprogowe przeszklenia HS otwierają salon na taras i ogród, automatyczna brama wita Cię od pierwszego dnia, a od strony lasu czeka dodatkowa furtka.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:28px">
+      <div class="room__media"><img class="lbimg" onclick="openLB(this.src)" src="assets/wiz/elewacja-front.jpg" alt="Bryła domu od frontu"></div>
+      <div class="room__media"><img class="lbimg" onclick="openLB(this.src)" src="assets/wiz/elewacja-ogrod.jpg" alt="Bryła domu od ogrodu"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STANDARD -->
+<section class="std section">
+  <div class="wrap">
+    <p class="kicker">Budujemy jak dla siebie</p>
+    <h2 class="h2">Standard, którego nie trzeba poprawiać</h2>
+    <p class="lead">To, co u innych bywa opcją za dopłatą, u nas jest w cenie. Wybieramy rozwiązania, które sami chcielibyśmy mieć w domu – trwałe, energooszczędne i wygodne na lata.</p>
+    <div class="feat-carousel">
+      <div class="feat" id="featTrack">
+        <div class="feat-slide">
+          <div class="feat__i"><h4>Pompa ciepła</h4><p>Kompletna kotłownia, niskie koszty ogrzewania.</p></div>
+          <div class="feat__i"><h4>Ogrzewanie podłogowe</h4><p>Wodne, w całym domu – komfort na każdym metrze.</p></div>
+          <div class="feat__i"><h4>Okna 3-szybowe</h4><p>Ciepłe profile, tarasowe HS bezprogowe.</p></div>
+        </div>
+        <div class="feat-slide">
+          <div class="feat__i"><h4>Dach z blachy modułowej</h4><p>Budmat, kolor grafit, pełne obróbki.</p></div>
+          <div class="feat__i"><h4>Elewacja premium</h4><p>Tynk silikatowy z deską i okładziną ceramiczną.</p></div>
+          <div class="feat__i"><h4>Działka gotowa</h4><p>Ogrodzona, brama automatyczna, posiana trawa.</p></div>
+        </div>
+        <div class="feat-slide">
+          <div class="feat__i"><h4>Bezpieczeństwo</h4><p>2 kamery i przyłącze światłowodu.</p></div>
+          <div class="feat__i"><h4>Garaż w cenie</h4><p>Ocieplony, z napędem, z grzejnikiem.</p></div>
+        </div>
+      </div>
+      <button class="feat-arrow" type="button" onclick="featNext()" aria-label="Następne korzyści"><svg viewBox="0 0 24 24"><polyline points="9 5 16 12 9 19"/></svg></button>
+    </div>
+    <div class="feat-dots" id="featDots">
+      <button class="featdot active" type="button" onclick="featGo(0)" aria-label="Korzyści 1–3"></button>
+      <button class="featdot" type="button" onclick="featGo(1)" aria-label="Korzyści 4–6"></button>
+      <button class="featdot" type="button" onclick="featGo(2)" aria-label="Korzyści 7–8"></button>
+    </div>
+  </div>
+</section>
+
+<!-- INTERIOR DESIGN -->
+<section class="id section" id="wnetrza">
+  <div class="wrap">
+    <p class="kicker">PAMOS Interior Design</p>
+    <h2 class="h2">Zaprojektujemy Twoją wymarzoną przestrzeń</h2>
+    <p class="lead">Nie musisz zaczynać od pustych ścian. Nasz zespół projektantów wnętrz przygotuje kompletny projekt Twojego domu – od układu funkcjonalnego po ostatni detal, materiał i kolor.</p>
+    <div class="offerwrap" id="offerwrap">
+      <div class="idcard">
+        <div class="room__meta" style="color:var(--sage)">Oferta specjalna dla klientów PAMOS Development</div>
+        <h3 style="font-family:var(--serif);font-weight:400;font-size:26px;color:var(--graphite);margin-top:6px">Kompletny projekt wnętrza domu</h3>
+        <div class="idprice">
+          <span class="old">30 000 zł</span>
+          <span class="new">15 000 zł</span>
+        </div>
+        <p style="font-size:12px;color:var(--muted)">cena dla nabywców naszego domu</p>
+        <a class="btn solid" href="#kontakt" style="display:inline-block;margin-top:18px;padding:14px 30px">Zapytaj o projekt</a>
+        <div style="margin-top:16px">
+          <button class="scopebtn" type="button" id="scopeBtn" onclick="toggleScope()">Sprawdź, co obejmuje projekt</button>
+        </div>
+        <div style="margin-top:14px">
+          <a href="https://www.instagram.com/pamos_interiordesign/" target="_blank" rel="noopener" style="color:var(--sage-d);text-decoration:underline;text-underline-offset:3px;font-weight:600;font-size:14px">Zobacz nasze realizacje</a>
+        </div>
+      </div>
+      <div class="scope" id="scope">
+        <h4 class="scope__title">Co obejmuje projekt</h4>
+        <ul class="scope__list">
+          <li>3 warianty układu funkcjonalnego (rzuty 2D) z rozmieszczeniem mebli, AGD i RTV.</li>
+          <li>Po 3 koncepcje stylistyczne pomieszczenia w wizualizacjach 3D.</li>
+          <li>Dobór materiałów, kolorów i rozwiązań estetycznych.</li>
+          <li>Pełna dokumentacja wykonawcza dla ekip (płytki, elektryka, stolarka, wymiary).</li>
+          <li>Gotowa lista zakupowa materiałów i wyposażenia.</li>
+          <li>Po 3 tury poprawek na każdym etapie projektu.</li>
+          <li>Spotkanie online, inwentaryzacja i wizyta na budowie.</li>
+        </ul>
+        <p class="scope__note">Spokojny harmonogram – standardowo ok. 3–4 miesięcy, z opcją przyspieszenia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section" id="kontakt">
+  <div class="wrap">
+    <p class="kicker">Kontakt</p>
+    <h2 class="h2">Porozmawiajmy o Twoim domu</h2>
+    <div class="cgrid">
+      <div class="cinfo">
+        <p class="lead" style="margin-top:0">Zostaw kontakt, a odezwiemy się i umówimy dogodny termin oględzin na miejscu inwestycji.</p>
+        <p class="line"><b>PAMOS Development Sp. z o.o.</b></p>
+        <p class="line">NIP 951 26 32 937</p>
+        <p class="cmaplabel">Lokalizacja inwestycji</p>
+        <div class="cmap">
+          <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Celin%C3%B3w%20Babiego%20Lata%2C%20D%C4%99be%20Wielkie&z=12&output=embed" title="Lokalizacja inwestycji – Celinów"></iframe>
+        </div>
+      </div>
+
+      <form class="form" id="contactForm">
+        <input type="hidden" name="access_key" value="ebe17453-07dc-42cd-bff4-a65a6dfa8d95">
+        <input type="hidden" name="subject" value="Nowe zapytanie ze strony PAMOS Development">
+        <input type="hidden" name="from_name" value="Strona PAMOS Development">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+        <div class="field">
+          <label for="name">Imię i nazwisko</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="phone">Nr telefonu</label>
+          <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]{9}" maxlength="9" minlength="9" title="Wpisz 9 cyfr numeru telefonu" oninput="this.value=this.value.replace(/\D/g,'').slice(0,9)" required>
+        </div>
+        <div class="field">
+          <label for="email">Adres e-mail</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="msg">Wiadomość</label>
+          <textarea id="msg" name="message" placeholder="W czym możemy pomóc?" required></textarea>
+        </div>
+        <button class="btn solid" type="submit">Wyślij</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__dev">
+      <img src="assets/pamos-development-horizontal-white.svg" alt="PAMOS Development">
+      <p class="small">PAMOS Development Sp. z o.o. · NIP 951 26 32 937</p>
+      <p class="small">© 2026 PAMOS Development. Wszelkie prawa zastrzeżone.</p>
+      <p class="small"><a href="polityka-prywatnosci.html">Polityka prywatności</a> · <a href="#" onclick="if(window.openCookieSettings){openCookieSettings();}return false;">Ustawienia cookies</a></p>
+    </div>
+    <div class="footer__home">
+      <p class="footer__label">Nasz showroom z meblami</p>
+      <a href="https://www.instagram.com/pamos_home/" target="_blank" rel="noopener" aria-label="PAMOS HOME na Instagramie">
+        <img class="footer__homelogo" src="assets/pamos-home-white-tight.svg" alt="PAMOS HOME">
+      </a>
+      <a class="footer__ig" href="https://www.instagram.com/pamos_home/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91a5.9 5.9 0 0 0 1.38 2.13 5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a6.15 6.15 0 0 0 3.51-3.51c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84M12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"/><circle cx="18.41" cy="5.59" r="1.44"/></svg>
+        pamos_home
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- POPUP -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="ok">&#10003;</div>
+    <h3>Dziękujemy</h3>
+    <p>Twoja wiadomość została do nas wysłana. Skontaktujemy się z Tobą jak najszybciej to możliwe.</p>
+    <button class="btn solid" onclick="document.getElementById('overlay').classList.remove('open')">Zamknij</button>
+  </div>
+</div>
+
+<div class="lb" id="lightbox" onclick="closeLB()">
+  <span class="lb__x" aria-label="Zamknij">&times;</span>
+  <img id="lbImg" src="" alt="Powiększenie">
+</div>
+
+<script>
+function openLB(src){document.getElementById('lbImg').src=src;document.getElementById('lightbox').classList.add('open');}
+function closeLB(){document.getElementById('lightbox').classList.remove('open');}
+function toggleScope(){var w=document.getElementById('offerwrap');var open=w.classList.toggle('open');document.getElementById('scopeBtn').textContent= open ? 'Ukryj szczegóły projektu' : 'Sprawdź, co obejmuje projekt';}
+function featGo(i){var f=document.getElementById('featTrack');if(f)f.scrollTo({left:i*f.clientWidth,behavior:'smooth'});}
+function featNext(){var f=document.getElementById('featTrack');if(!f)return;var dots=document.querySelectorAll('.featdot').length||1;var i=Math.round(f.scrollLeft/f.clientWidth);featGo((i+1)%dots);}
+(function(){var f=document.getElementById('featTrack');if(!f)return;f.addEventListener('scroll',function(){var i=Math.round(f.scrollLeft/f.clientWidth);document.querySelectorAll('.featdot').forEach(function(d,n){d.classList.toggle('active',n===i);});});})();
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLB();});
+document.getElementById('contactForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var form = e.target;
+  var data = new FormData(form);
+  try{
+    var res = await fetch('https://api.web3forms.com/submit', {
+      method:'POST', headers:{'Accept':'application/json'}, body:data
+    });
+    var json = await res.json();
+    if(json.success){ form.reset(); document.getElementById('overlay').classList.add('open'); }
+    else { alert('Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na pamosdevelopment@protonmail.com'); }
+  }catch(err){
+    alert('Błąd połączenia. Spróbuj ponownie lub napisz na pamosdevelopment@protonmail.com');
+  }
+});
+</script>
+
+</body>
+</html>
