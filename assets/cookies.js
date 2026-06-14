@@ -82,7 +82,7 @@
 
     var bar = elFrom('<div id="ckbar" role="dialog" aria-label="Zgoda na pliki cookies">'
       + '<div class="ck-txt"><h4>Dbamy o Twoją prywatność</h4>'
-      + '<p>Używamy plików cookies, aby zapewnić działanie strony oraz – za Twoją zgodą – do analizy ruchu i marketingu (Google Analytics, Google Ads, Meta Pixel). Szczegóły w <a href="polityka-prywatnosci.html">Polityce prywatności</a>.</p></div>'
+      + '<p>Używamy plików cookies, aby zapewnić działanie strony oraz – za Twoją zgodą – do analizy ruchu i marketingu (Google Analytics, Google Ads, Meta Pixel). Szczegóły w <a href="/polityka-prywatnosci/">Polityce prywatności</a>.</p></div>'
       + '<div class="ck-btns"><button class="ck-link" id="ckSettings" type="button">Ustawienia</button>'
       + '<button class="ck-btn" id="ckNec" type="button">Tylko niezbędne</button>'
       + '<button class="ck-btn solid" id="ckAll" type="button">Akceptuję wszystkie</button></div></div>');
