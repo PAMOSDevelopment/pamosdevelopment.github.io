@@ -2,7 +2,7 @@
    USTAW SWÓJ KONTENER: wpisz ID GTM poniżej (format GTM-XXXXXXX).
    Dopóki jest placeholder, GTM się nie ładuje (bez błędów w konsoli). */
 (function () {
-  var GTM_ID = 'GTM-XXXXXXX'; // <-- WSTAW TUTAJ swój identyfikator kontenera GTM
+  var GTM_ID = 'GTM-W63TSNLR'; // identyfikator kontenera Google Tag Manager
   var KEY = 'pamos_consent';
 
   window.dataLayer = window.dataLayer || [];
