@@ -1,0 +1,9 @@
+/* Przełącznik języka PAMOS – flagi PL/EN */
+.langswitch{display:none}
+.lang{display:inline-flex;width:30px;height:20px;border-radius:4px;overflow:hidden;opacity:.45;transition:.15s;border:1px solid rgba(0,0,0,.12)}
+.lang:hover{opacity:.85}
+.lang.active{opacity:1;box-shadow:0 0 0 2px var(--sage,#68af9f)}
+.lang .flagimg{width:100%;height:100%;display:block}
+.mm-lang{display:flex;gap:14px;align-items:center;padding-top:14px;margin-top:8px;border-top:1px solid #f3f3f3}
+.mm-lang .lang{width:36px;height:24px}
+@media(min-width:760px){.langswitch{display:flex;align-items:center;gap:8px;margin-left:22px;order:2}}

@@ -1,26 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://pamosdevelopment.pl/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://pamosdevelopment.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pamosdevelopment.pl/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pamosdevelopment.pl/"/>
+    <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://pamosdevelopment.pl/dom/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://pamosdevelopment.pl/dom/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pamosdevelopment.pl/en/house/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pamosdevelopment.pl/dom/"/>
+    <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pamosdevelopment.pl/wnetrza/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://pamosdevelopment.pl/wnetrza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pamosdevelopment.pl/en/interior-design/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pamosdevelopment.pl/wnetrza/"/>
+    <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pamosdevelopment.pl/polityka-prywatnosci/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://pamosdevelopment.pl/polityka-prywatnosci/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pamosdevelopment.pl/en/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pamosdevelopment.pl/polityka-prywatnosci/"/>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://pamosdevelopment.pl/en/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://pamosdevelopment.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pamosdevelopment.pl/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pamosdevelopment.pl/"/>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pamosdevelopment.pl/en/house/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://pamosdevelopment.pl/dom/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pamosdevelopment.pl/en/house/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pamosdevelopment.pl/dom/"/>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pamosdevelopment.pl/en/interior-design/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://pamosdevelopment.pl/wnetrza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pamosdevelopment.pl/en/interior-design/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pamosdevelopment.pl/wnetrza/"/>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pamosdevelopment.pl/en/privacy-policy/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://pamosdevelopment.pl/polityka-prywatnosci/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pamosdevelopment.pl/en/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pamosdevelopment.pl/polityka-prywatnosci/"/>
+    <lastmod>2026-06-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>

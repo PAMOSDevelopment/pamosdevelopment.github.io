@@ -5,6 +5,30 @@
   var GTM_ID = 'GTM-W63TSNLR'; // identyfikator kontenera Google Tag Manager
   var KEY = 'pamos_consent';
 
+  // Język wg atrybutu <html lang> – teksty bannera PL/EN
+  var EN = (document.documentElement.lang || 'pl').toLowerCase().indexOf('en') === 0;
+  var T = EN ? {
+    barLabel: 'Cookie consent',
+    h4: 'We value your privacy',
+    p: 'We use cookies to make the site work and – with your consent – for traffic analytics and marketing (Google Analytics, Google Ads, Meta Pixel). Details in our <a href="/en/privacy-policy/">Privacy Policy</a>.',
+    settings: 'Settings', nec: 'Necessary only', all: 'Accept all',
+    panelLabel: 'Cookie settings', panelH: 'Cookie settings',
+    necT: 'Necessary', necD: 'Keep the site working and remember your choice. Always on.',
+    anaT: 'Analytics', anaD: 'Google Analytics 4 – traffic statistics that help us improve the site.',
+    mktT: 'Marketing', mktD: 'Google Ads and Meta Pixel – advertising, remarketing and conversion measurement.',
+    save: 'Save choices', necAria: 'Necessary – always on', anaAria: 'Analytics', mktAria: 'Marketing'
+  } : {
+    barLabel: 'Zgoda na pliki cookies',
+    h4: 'Dbamy o Twoją prywatność',
+    p: 'Używamy plików cookies, aby zapewnić działanie strony oraz – za Twoją zgodą – do analizy ruchu i marketingu (Google Analytics, Google Ads, Meta Pixel). Szczegóły w <a href="/polityka-prywatnosci/">Polityce prywatności</a>.',
+    settings: 'Ustawienia', nec: 'Tylko niezbędne', all: 'Akceptuję wszystkie',
+    panelLabel: 'Ustawienia plików cookies', panelH: 'Ustawienia plików cookies',
+    necT: 'Niezbędne', necD: 'Zapewniają działanie strony i zapamiętują Twój wybór. Zawsze aktywne.',
+    anaT: 'Analityczne', anaD: 'Google Analytics 4 – statystyki ruchu, pomagają ulepszać stronę.',
+    mktT: 'Marketingowe', mktD: 'Google Ads i Meta Pixel – reklama, remarketing i pomiar konwersji.',
+    save: 'Zapisz wybór', necAria: 'Niezbędne – zawsze aktywne', anaAria: 'Analityczne', mktAria: 'Marketingowe'
+  };
+
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
   window.gtag = window.gtag || gtag;
@@ -80,20 +104,20 @@
   function init() {
     var style = document.createElement('style'); style.textContent = CSS; document.head.appendChild(style);
 
-    var bar = elFrom('<div id="ckbar" role="dialog" aria-label="Zgoda na pliki cookies">'
-      + '<div class="ck-txt"><h4>Dbamy o Twoją prywatność</h4>'
-      + '<p>Używamy plików cookies, aby zapewnić działanie strony oraz – za Twoją zgodą – do analizy ruchu i marketingu (Google Analytics, Google Ads, Meta Pixel). Szczegóły w <a href="/polityka-prywatnosci/">Polityce prywatności</a>.</p></div>'
-      + '<div class="ck-btns"><button class="ck-link" id="ckSettings" type="button">Ustawienia</button>'
-      + '<button class="ck-btn" id="ckNec" type="button">Tylko niezbędne</button>'
-      + '<button class="ck-btn solid" id="ckAll" type="button">Akceptuję wszystkie</button></div></div>');
+    var bar = elFrom('<div id="ckbar" role="dialog" aria-label="' + T.barLabel + '">'
+      + '<div class="ck-txt"><h4>' + T.h4 + '</h4>'
+      + '<p>' + T.p + '</p></div>'
+      + '<div class="ck-btns"><button class="ck-link" id="ckSettings" type="button">' + T.settings + '</button>'
+      + '<button class="ck-btn" id="ckNec" type="button">' + T.nec + '</button>'
+      + '<button class="ck-btn solid" id="ckAll" type="button">' + T.all + '</button></div></div>');
 
-    var panel = elFrom('<div id="ckpanel"><div class="ck-card" role="dialog" aria-label="Ustawienia plików cookies">'
-      + '<h4>Ustawienia plików cookies</h4>'
-      + '<div class="ck-row"><div><div class="t">Niezbędne</div><div class="d">Zapewniają działanie strony i zapamiętują Twój wybór. Zawsze aktywne.</div></div><button class="ck-sw on lock" disabled aria-label="Niezbędne – zawsze aktywne"><i></i></button></div>'
-      + '<div class="ck-row"><div><div class="t">Analityczne</div><div class="d">Google Analytics 4 – statystyki ruchu, pomagają ulepszać stronę.</div></div><button class="ck-sw" id="ckAnalytics" type="button" aria-pressed="false" aria-label="Analityczne"><i></i></button></div>'
-      + '<div class="ck-row"><div><div class="t">Marketingowe</div><div class="d">Google Ads i Meta Pixel – reklama, remarketing i pomiar konwersji.</div></div><button class="ck-sw" id="ckMarketing" type="button" aria-pressed="false" aria-label="Marketingowe"><i></i></button></div>'
-      + '<div class="ck-pbtns"><button class="ck-btn" id="ckSave" type="button">Zapisz wybór</button>'
-      + '<button class="ck-btn solid" id="ckAll2" type="button">Akceptuję wszystkie</button></div></div></div>');
+    var panel = elFrom('<div id="ckpanel"><div class="ck-card" role="dialog" aria-label="' + T.panelLabel + '">'
+      + '<h4>' + T.panelH + '</h4>'
+      + '<div class="ck-row"><div><div class="t">' + T.necT + '</div><div class="d">' + T.necD + '</div></div><button class="ck-sw on lock" disabled aria-label="' + T.necAria + '"><i></i></button></div>'
+      + '<div class="ck-row"><div><div class="t">' + T.anaT + '</div><div class="d">' + T.anaD + '</div></div><button class="ck-sw" id="ckAnalytics" type="button" aria-pressed="false" aria-label="' + T.anaAria + '"><i></i></button></div>'
+      + '<div class="ck-row"><div><div class="t">' + T.mktT + '</div><div class="d">' + T.mktD + '</div></div><button class="ck-sw" id="ckMarketing" type="button" aria-pressed="false" aria-label="' + T.mktAria + '"><i></i></button></div>'
+      + '<div class="ck-pbtns"><button class="ck-btn" id="ckSave" type="button">' + T.save + '</button>'
+      + '<button class="ck-btn solid" id="ckAll2" type="button">' + T.all + '</button></div></div></div>');
 
     document.body.appendChild(bar);
     document.body.appendChild(panel);
