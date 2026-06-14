@@ -1,6 +1,6 @@
 /* PAMOS – zgody na cookies + Google Consent Mode v2 + ładowanie GTM.
-   USTAW SWÓJ KONTENER: wpisz ID GTM poniżej (format GTM-XXXXXXX).
-   Dopóki jest placeholder, GTM się nie ładuje (bez błędów w konsoli). */
+   Kontener GTM ustawiony poniżej. GTM ładuje się z domyślnymi zgodami „denied",
+   które są aktualizowane po wyborze użytkownika w bannerze cookies. */
 (function () {
   var GTM_ID = 'GTM-W63TSNLR'; // identyfikator kontenera Google Tag Manager
   var KEY = 'pamos_consent';
