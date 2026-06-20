@@ -504,20 +504,20 @@ a{color:inherit;text-decoration:none}
 
 <script>
 var GAL=[
- {src:'assets/wiz/strefa-dzienna-1.jpg',cap:'Living area'},
- {src:'assets/wiz/kuchnia-strefa-dzienna.jpg',cap:'Kitchen and living area'},
- {src:'assets/wiz/strefa-dzienna-kominek.jpg',cap:'Living room – fireplace and stairs'},
- {src:'assets/wiz/wejscie-hol.jpg',cap:'Entrance and hall'},
- {src:'assets/wiz/lazienka.jpg',cap:'Bathroom with WC – ground floor'},
- {src:'assets/wiz/toaleta.jpg',cap:'Bathroom with WC – ground floor'},
- {src:'assets/wiz/sypialnia-glowna.jpg',cap:'Bedroom'},
- {src:'assets/wiz/sypialnia.jpg',cap:'Bedroom'},
- {src:'assets/wiz/gabinet.jpg',cap:'Study'},
- {src:'assets/wiz/pokoj-dziecka-1.jpg',cap:"Child's room"},
- {src:'assets/wiz/pokoj-dziecka-3.jpg',cap:"Child's room"},
- {src:'assets/wiz/lazienka-pietro-1.jpg',cap:'Bathroom – first floor'},
- {src:'assets/wiz/lazienka-pietro-2.jpg',cap:'Bathroom – first floor'},
- {src:'assets/wiz/lazienka-przy-sypialni.jpg',cap:'En-suite bathroom'}
+ {src:'/assets/wiz/strefa-dzienna-1.jpg',cap:'Living area'},
+ {src:'/assets/wiz/kuchnia-strefa-dzienna.jpg',cap:'Kitchen and living area'},
+ {src:'/assets/wiz/strefa-dzienna-kominek.jpg',cap:'Living room – fireplace and stairs'},
+ {src:'/assets/wiz/wejscie-hol.jpg',cap:'Entrance and hall'},
+ {src:'/assets/wiz/lazienka.jpg',cap:'Bathroom with WC – ground floor'},
+ {src:'/assets/wiz/toaleta.jpg',cap:'Bathroom with WC – ground floor'},
+ {src:'/assets/wiz/sypialnia-glowna.jpg',cap:'Bedroom'},
+ {src:'/assets/wiz/sypialnia.jpg',cap:'Bedroom'},
+ {src:'/assets/wiz/gabinet.jpg',cap:'Study'},
+ {src:'/assets/wiz/pokoj-dziecka-1.jpg',cap:"Child's room"},
+ {src:'/assets/wiz/pokoj-dziecka-3.jpg',cap:"Child's room"},
+ {src:'/assets/wiz/lazienka-pietro-1.jpg',cap:'Bathroom – first floor'},
+ {src:'/assets/wiz/lazienka-pietro-2.jpg',cap:'Bathroom – first floor'},
+ {src:'/assets/wiz/lazienka-przy-sypialni.jpg',cap:'En-suite bathroom'}
 ];
 var mainIdx=0, lbIdx=0;
 function showMain(i){mainIdx=i;var m=document.getElementById('mainImg');m.src=GAL[i].src;m.alt=GAL[i].cap;document.getElementById('mainCap').textContent=GAL[i].cap;document.querySelectorAll('#thumbs img').forEach(function(t,n){t.classList.toggle('active',n===i);});}
